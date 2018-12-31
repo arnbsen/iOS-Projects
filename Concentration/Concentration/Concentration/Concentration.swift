@@ -12,6 +12,7 @@ class Concetration {
     var cards = [Card]()
     var oneAndOnlyFaceUpCard : Int?
     var flipCount = 0 // Achieved Objective 8
+    var matchCount = 0
     
     init(noOfPairsOfCards: Int) {
         for id in 1...noOfPairsOfCards {
@@ -33,6 +34,7 @@ class Concetration {
                     cards[index].isMatched = true
                     cards[matchIndex].isMatched = true
                     flipCount += 2
+                    matchCount += 1
                 } else {
                     flipCount += cards[index].isSeenOnce ? -1 : 0
                     flipCount += cards[matchIndex].isSeenOnce ? -1 : 0

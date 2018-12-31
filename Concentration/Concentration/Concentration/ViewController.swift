@@ -10,18 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+    let emojiGallery = [["👻", "🎃", "😸", "🦊", "🐧","🦉","👿","🍎"], ["🥎","⚽️", "🏏", "🏈", "🏃🏻‍♂️", "🏓", "🏸", "🎱"], ["😀", "😇", "😛", "😡", "😭", "🤓", "😨", "🤣"]]
+    
+    
     lazy var game = Concetration(noOfPairsOfCards: cardButtons.count/2)
+    lazy var emojiChoices = emojiGallery[Int(arc4random_uniform(UInt32(emojiGallery.count)))]
+    // Dictionary
+    var emoji = [Int: String]()
     
     @IBOutlet var cardButtons: [UIButton]!
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBAction func newGame(_ sender: UIButton) {
-        
+        restartGame()
     }
+    
     
     @IBAction func flipCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender){
@@ -46,10 +49,19 @@ class ViewController: UIViewController {
             }
         }
         scoreLabel.text = "Score: " + "\(game.flipCount)"
+        if game.matchCount == cardButtons.count/2 {
+            restartGame()
+        }
     }
-    var emojiChoices = ["👻", "🎃", "😸", "🦊", "🐧","🦉","👿","🍎"]
-    // Dictionary
-    var emoji = [Int: String]()
+    func restartGame() {
+        emojiChoices = emojiGallery[Int(arc4random_uniform(UInt32(emojiGallery.count)))]
+        game = Concetration(noOfPairsOfCards: cardButtons.count/2)
+        emoji = [Int: String]()
+        updateViewFromModel()
+    }
+    
+    
+    
     
     // Getting an Emoji for Card at runtime
     func getEmoji(for card: Card) -> String {
