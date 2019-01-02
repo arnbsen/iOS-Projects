@@ -6,14 +6,26 @@
 //  Copyright © 2018 Arnab Sen. All rights reserved.
 //
 
-struct Card {
+struct Card : Hashable {
     var isFaceUp = false
     var isSeenOnce = false
     var isMatched = false
-    var id : Int
+    private(set) var id : Int
     
-    init(identifier: Int) {
-        self.id = identifier
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    
+    private static var identifierGetter = 0
+    
+    private static func identifierFactory() -> Int {
+        Card.identifierGetter += 1
+        return Card.identifierGetter
+    }
+    
+    init() {
+        self.id = Card.identifierFactory()
     }
     
 }
