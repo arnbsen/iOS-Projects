@@ -7,12 +7,12 @@
 //
 struct Card : Hashable {
     
-    private var numberOnCard : Int
-    private var colourID : Int
-    private var shapeID : Int
-    private var shadingID : Int
-    var isMatched : Bool = false
+    var numberOnCard : Int
+    var colourID : Int
+    var shapeID : Int
+    var shadingID : Int
     var isSelected : Bool = false
+    var isVisible : Bool = false
     
     
     static func == (lhs: Card, rhs: Card) -> Bool {
