@@ -12,17 +12,20 @@ class Concetration {
     var cards = [Card]()
     var oneAndOnlyFaceUpCard : Int? {
         get {
-            var foundIndex : Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    }else{
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            // Array implements the protocol Collection therefore extending collections to perform the check
+            // the conditions mentioned below
+            return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
+//            var foundIndex : Int?
+//            for index in cards.indices {
+//                if cards[index].isFaceUp {
+//                    if foundIndex == nil {
+//                        foundIndex = index
+//                    }else{
+//                        return nil
+//                    }
+//                }
+//            }
+//            return foundIndex
         }
         set {
             for index in cards.indices {
@@ -72,5 +75,10 @@ class Concetration {
 extension Int {
     var arc4random : Int {
         return Int(arc4random_uniform(UInt32(self)))
+    }
+}
+extension Collection {
+    var oneAndOnly : Element? {
+        return count == 1 ? first : nil
     }
 }

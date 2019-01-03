@@ -22,12 +22,26 @@ class ViewController: UIViewController {
     // Dictionary
     var emoji = [Int: String]()
     
-    @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private weak var scoreLabel: UILabel!
-    @IBOutlet private weak var newGameButton: UIButton!
-    
+    @IBOutlet private var cardButtons: [UIButton]! {
+        didSet{
+            for index in cardButtons.indices{
+                cardButtons[index].backgroundColor = currentCardBackColour
+            }
+        }
+    }
+    @IBOutlet private weak var scoreLabel: UILabel! {
+        didSet {
+            scoreLabel.textColor = currentCardBackColour
+        }
+    }
+    @IBOutlet private weak var newGameButton: UIButton! {
+        didSet {
+            newGameButton.setTitleColor(currentCardBackColour, for: UIControl.State.normal)
+        }
+    }
     override func viewDidLoad() {
-        restartGame()
+        super.viewDidLoad()
+        self.view.backgroundColor = currentBackgroudColour
     }
     
     @IBAction private func newGame(_ sender: UIButton) {
