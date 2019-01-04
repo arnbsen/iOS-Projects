@@ -38,15 +38,13 @@ class Set {
         }
     }
     
-    func selectCard(at index: Int)  {
-        activePlayingCards[index].isSelected = true
+    func toggleCard(at index: Int)  {
+        activePlayingCards[index].isSelected = !activePlayingCards[index].isSelected
         if selectedCards == 3 {
             checkCardForMatch()
         }
     }
-    func deselectCard(at index: Int)  {
-        activePlayingCards[index].isSelected = false
-    }
+    
     
     func deal3Cards(){
         var invisible = activePlayingCards.indices.filter { !activePlayingCards[$0].isVisible }
@@ -74,6 +72,7 @@ class Set {
             for index in selected {
                 activePlayingCards[index] = deck.remove(at: deck.count.arc4random)
                 activePlayingCards[index].isSelected = false
+                activePlayingCards[index].isVisible = true
                 score += 5
             }
         }else{
