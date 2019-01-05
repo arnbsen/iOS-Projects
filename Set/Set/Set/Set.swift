@@ -11,7 +11,7 @@ class Set {
     private var deck = [Card]()
     var activePlayingCards =  [Card?]()
     var selectedCards = [Card]()
-    
+    private var winningScore = 5
     var score = 0
     
     
@@ -66,6 +66,9 @@ class Set {
                 }
             }
         }
+        if winningScore > 1 {
+            winningScore -= 1
+        }
     }
     
     private func checkCardsForMatch (){
@@ -85,7 +88,7 @@ class Set {
                     activePlayingCards[index] = nil
                 }
             }
-            score += 5
+            score += winningScore
         } else {
             score += -3
         }
