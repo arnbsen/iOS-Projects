@@ -12,7 +12,7 @@ class CardContainerView: UIView {
 
    
     override func draw(_ rect: CGRect) {
-        self.addSubview(CardView(frame: CGRect(x: 10.0, y: 10.0, width: 50, height: 50), forCard: Card(numberOnCard: 1, colourID: 1, shapeID: 1, shadingID: 1)))
+        self.addSubview(CardView(frame: CGRect(x: 10.0, y: 10.0, width: 200, height: 200), forCard: Card(numberOnCard: 3, colourID: 1, shapeID: 2, shadingID: 3)))
     }
     
     private var game : Set?
