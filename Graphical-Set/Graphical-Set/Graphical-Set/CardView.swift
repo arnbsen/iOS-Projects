@@ -12,7 +12,7 @@ class CardView: UIView {
 
    
     override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: bounds, cornerRadius: 5.0)
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: rect.width.getCoordinateWith(ratio: 0.10))
         path.addClip()
         drawingColour.setFill()
         path.fill()
@@ -86,14 +86,13 @@ class CardView: UIView {
             var (cursorX, cursorY) = (startX, startY)
             let (width, height) = (bounds.maxX.computeMaxX, bounds.maxY.computeMaxY)
             
-            
+    
             for row in presentSelectionOfNumber {
                 
                 if row == 1 {
                     let pathLocal = UIBezierPath()
                     let boundsLocal = CGRect(x: cursorX, y: cursorY, width: width, height: height.getCoordinateWith(ratio: 0.2))
-                    pathLocal.bounds.offsetBy(dx: 50.0, dy: 50.0)
-                    pathLocal.move(to: CGPoint(x: boundsLocal.minX , y: boundsLocal.minY))
+                    pathLocal.move(to: CGPoint(x: boundsLocal.origin.x , y: boundsLocal.origin.y))
                     pathLocal.addQuadCurve(to: CGPoint(x: boundsLocal.midX, y: boundsLocal.minY), controlPoint: CGPoint(x: boundsLocal.minX + boundsLocal.maxX / 4.0, y: boundsLocal.minY - boundsLocal.height))
                     pathLocal.addQuadCurve(to: CGPoint(x: boundsLocal.maxX, y: boundsLocal.minY), controlPoint: CGPoint(x: boundsLocal.maxX - boundsLocal.maxX / 4.0, y: boundsLocal.minY + boundsLocal.height))
                     pathLocal.addArc(withCenter: CGPoint(x: boundsLocal.maxX, y: boundsLocal.midY), radius: boundsLocal.height / 2.0 , startAngle: 0, endAngle: CGFloat.pi/2, clockwise: true)
@@ -102,30 +101,31 @@ class CardView: UIView {
                     pathLocal.addArc(withCenter: CGPoint(x: boundsLocal.minX, y: boundsLocal.midY), radius: boundsLocal.height / 2.0 , startAngle: CGFloat.pi/2, endAngle: CGFloat.pi + CGFloat.pi / 2.0 , clockwise: true)
                     pathLocal.close()
                    fillShade(with: pathLocal)
+                    
                 }
                 
                 cursorY += height.getCoordinateWith(ratio: 0.4)
             }
         }
         func drawOvals () {
-            var (topX, topY) = (bounds.origin.x + bounds.midX / 2.0, bounds.maxX.getCoordinateWith(ratio: 0.1))
+            var (topX, topY) = (bounds.origin.x + bounds.width / 2.0, bounds.height.getCoordinateWith(ratio: 0.1))
             
             for row in presentSelectionOfNumber {
                 if row == 1 {
                     let pathLocal = UIBezierPath()
-                    let boundsLocal = CGRect(x: topX, y: topY + bounds.maxY.getCoordinateWith(ratio: 0.1), width: bounds.width / 2.0 , height: bounds.maxY.getCoordinateWith(ratio: 0.2))
+                    let boundsLocal = CGRect(x: topX, y: topY + bounds.height.getCoordinateWith(ratio: 0.1), width: bounds.width / 2.0 , height: bounds.height.getCoordinateWith(ratio: 0.2))
                     pathLocal.move(to: CGPoint(x: bounds.midX, y: topY))
                     pathLocal.removeAllPoints()
                     pathLocal.addArc(withCenter: CGPoint(x: bounds.midX, y: topY + boundsLocal.height / 2.0), radius: boundsLocal.height / 2.0, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: true)
                     pathLocal.close()
                   fillShade(with: pathLocal)
                 }
-                topY += bounds.height.getCoordinateWith(ratio: 0.3)
+                topY += bounds.height.getCoordinateWith(ratio: 0.25)
             }
-            //pathLocal.addClip()
         }
         
         func fillShade(with path: UIBezierPath) {
+            let context = UIGraphicsGetCurrentContext()
             switch presentSelectionOfShading {
                 case 1:
                     presetSelectionOfColour.setStroke()
@@ -135,6 +135,7 @@ class CardView: UIView {
                     path.fill()
                     path.stroke()
                 case 3:
+                    context?.saveGState()
                     presetSelectionOfColour.set()
                     let pathBounds = path.bounds
                     for multiplier in 1...3 {
@@ -144,6 +145,7 @@ class CardView: UIView {
                     path.addClip()
                     path.lineWidth = pathBounds.size.height.getCoordinateWith(ratio: 0.08)
                     path.stroke()
+                    context?.restoreGState()
                 default:
                     break
             }

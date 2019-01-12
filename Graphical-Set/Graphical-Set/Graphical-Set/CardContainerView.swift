@@ -9,20 +9,52 @@
 import UIKit
 
 class CardContainerView: UIView {
-
-   
+    
     override func draw(_ rect: CGRect) {
-        self.addSubview(CardView(frame: CGRect(x: 10.0, y: 10.0, width: 200, height: 200), forCard: Card(numberOnCard: 3, colourID: 1, shapeID: 2, shadingID: 3)))
+        for view in subviews {
+            view.removeFromSuperview()
+        }
+        var (nrows, ncols) = getRowAndColumns()
+        let rowSpacing = rect.width.getCoordinateWith(ratio: 0.005)
+        let colSpacing = rect.height.getCoordinateWith(ratio: 0.005)
+        
+        if rect.width < rect.height {
+            (nrows, ncols) = nrows < ncols ? (nrows, ncols) : (ncols, nrows)
+        } else {
+            (nrows, ncols) = nrows < ncols ? (ncols, nrows) : (nrows, ncols)
+        }
+        
+        let optimumHeight = (rect.height - CGFloat(ncols - 1) * colSpacing) / CGFloat(ncols)
+        let optimunWidth = (rect.width - CGFloat(nrows - 1) * rowSpacing) / CGFloat(nrows)
+        var (X, Y) = (CGPoint.zero.x + colSpacing, CGPoint.zero.y + rowSpacing)
+        var cardIterator = 0
+        for _ in 0..<nrows {
+            Y = CGPoint.zero.y
+            for _ in 0..<ncols{
+                let cardDimensions = CGRect(x: CGFloat(X), y: CGFloat(Y), width: optimunWidth, height: optimumHeight)
+                let cardView = CardView(frame: cardDimensions, forCard: activePlayingCards[cardIterator])
+                addSubview(cardView)
+                Y += rowSpacing + optimumHeight
+                cardIterator += 1
+            }
+            X += colSpacing + optimunWidth
+        }
     }
     
-    private var game : Set?
+    private func getRowAndColumns() -> (Int, Int){
+        assert(activePlayingCards.count >= 3, "Card Count not Expected")
+        // 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, ...
+        var numRows = 0
+        var numCols = 0
+        for divisor in 3...9 {
+            numRows = activePlayingCards.count % divisor == 0 ? divisor : numRows
+        }
+        numCols = activePlayingCards.count / numRows
+        return (numRows, numCols)
+    }
     
     
-    init(frame : CGRect, game: Set) {
-        super.init(frame: frame)
-        self.game = game
-    }
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    var activePlayingCards = [Card]()
+    
 }
+

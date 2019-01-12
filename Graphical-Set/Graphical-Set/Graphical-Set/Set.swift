@@ -9,7 +9,7 @@ import Foundation
 class Set {
     
     private var deck = [Card]()
-    var activePlayingCards =  [Card?]()
+    var activePlayingCards =  [Card]()
     var selectedCards = [Card]()
     private var winningScore = 5
     var score = 0
@@ -21,7 +21,7 @@ class Set {
                 for k in 1...3 {
                     for l in 1...3 {
                         let card = Card(numberOnCard: i, colourID: j, shapeID: k, shadingID: l)
-                        deck += [card]
+                        deck.append(card)
                     }
                 }
             }
@@ -31,9 +31,7 @@ class Set {
             let rand_index = deck.count.arc4random
             activePlayingCards += [deck.remove(at: rand_index)]
         }
-        for _ in 1...12 {
-            activePlayingCards += [nil]
-        }
+        
         var temp = activePlayingCards
         for index in activePlayingCards.indices {
             activePlayingCards[index] = temp.remove(at: temp.count.arc4random)
@@ -42,13 +40,13 @@ class Set {
     
     func toggleCard(with index : Int){
         let card = activePlayingCards[index]
-        if card != nil {
-            if selectedCards.contains(card!){
-                selectedCards.remove(at: selectedCards.index(of: card!)!)
-            } else {
-                selectedCards += [card!]
-            }
+    
+        if selectedCards.contains(card){
+            selectedCards.remove(at: selectedCards.index(of: card)!)
+        } else {
+            selectedCards += [card]
         }
+        
         if selectedCards.count == 3 {
             checkCardsForMatch()
         }
@@ -56,18 +54,15 @@ class Set {
     
     
     func deal3Cards() {
-        var nilIndex = activePlayingCards.indices.filter {activePlayingCards[$0] == nil}
-        if nilIndex.count > 0 {
-            for _ in 1...3 {
-                let rand_index_apc = nilIndex.remove(at: nilIndex.count.arc4random)
-                if deck.count > 0 {
-                    let subs = deck.remove(at: deck.count.arc4random)
-                    activePlayingCards[rand_index_apc] = subs
-                }
+        if deck.count < 3 {
+            for card in deck {
+                activePlayingCards.append(card)
             }
-        }
-        if winningScore > 1 {
-            winningScore -= 1
+        } else {
+            for _ in 1...3 {
+                let rand_index = deck.count.arc4random
+                activePlayingCards.append(deck.remove(at: rand_index))
+            }
         }
     }
     
@@ -84,8 +79,6 @@ class Set {
                 let index = activePlayingCards.index(of: card)!
                 if deck.count > 0 {
                     activePlayingCards[index] = deck.remove(at: deck.count.arc4random)
-                } else {
-                    activePlayingCards[index] = nil
                 }
             }
             score += winningScore

@@ -14,11 +14,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateViewFromModel()
     }
-    private lazy var game = Set()
+    lazy var game = Set()
 
     @IBAction private func newGame(_ sender: UIButton) {
         game = Set()
         updateViewFromModel()
+    }
+    
+    @IBOutlet weak var cardContainer: CardContainerView! {
+        didSet {
+            updateViewFromModel()
+        }
+    }
+
+    @objc private func rotationGestureHandler(sender: UIRotationGestureRecognizer){
+        
+    }
+    
+    @objc private func swipeGuestureHandler(sender: UISwipeGestureRecognizer){
+        if sender.direction == .down, sender.state == .ended {
+            game.deal3Cards()
+            updateViewFromModel()
+        }
     }
     
     @IBAction private func deal3Cards(_ sender: UIButton) {
@@ -28,7 +45,9 @@ class ViewController: UIViewController {
     @IBOutlet private weak var scoreLabel: UILabel!
  
     private func updateViewFromModel() {
-        
+        cardContainer.activePlayingCards.removeAll()
+        cardContainer.activePlayingCards.append(contentsOf: game.activePlayingCards)
+        cardContainer.setNeedsDisplay()
     }
 }
 
