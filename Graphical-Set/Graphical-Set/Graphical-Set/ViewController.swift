@@ -23,28 +23,50 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cardContainer: CardContainerView! {
         didSet {
-            updateViewFromModel()
+            cardContainer.controller = self
+            let rotationGuesture = UIRotationGestureRecognizer(target: self, action: #selector(rotationGestureHandler(sender:)))
+            
+            let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeGestureRecognizer(sender:)))
+            swipeGesture.direction = .down
+            cardContainer.addGestureRecognizer(swipeGesture)
+            cardContainer.addGestureRecognizer(rotationGuesture)
+            cardContainer.game = game
         }
     }
 
     @objc private func rotationGestureHandler(sender: UIRotationGestureRecognizer){
-        
+        if sender.state == .ended {
+            game.shuffleCards()
+            updateViewFromModel()
+        }
     }
     
-    @objc private func swipeGuestureHandler(sender: UISwipeGestureRecognizer){
-        if sender.direction == .down, sender.state == .ended {
+    @objc private func swipeGestureRecognizer(sender: UISwipeGestureRecognizer) {
+        if sender.state == .ended {
             game.deal3Cards()
             updateViewFromModel()
         }
     }
+    
     
     @IBAction private func deal3Cards(_ sender: UIButton) {
         game.deal3Cards()
         updateViewFromModel()
     }
     @IBOutlet private weak var scoreLabel: UILabel!
+    
+    func changeScoreLabel () {
+        scoreLabel.text = "Score: \(game.score)"
+    }
  
+    func selectCard(with card: Card) {
+        if game.toggleCard(with: card){
+            updateViewFromModel()
+        }
+    }
+    
     private func updateViewFromModel() {
+        scoreLabel.text = "Score: \(game.score)"
         cardContainer.activePlayingCards.removeAll()
         cardContainer.activePlayingCards.append(contentsOf: game.activePlayingCards)
         cardContainer.setNeedsDisplay()

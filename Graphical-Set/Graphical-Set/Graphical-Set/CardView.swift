@@ -20,34 +20,28 @@ class CardView: UIView {
     }
     
     private var card : Card?
-    private var tapGuestureRecogniser : UITapGestureRecognizer = UITapGestureRecognizer()
-    
     private var drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    
+    private var controller : ViewController?
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    init(frame: CGRect, forCard : Card) {
+    init(frame: CGRect, forCard : Card, controller: ViewController) {
         super.init(frame: frame)
         card = forCard
         backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        
-        tapGuestureRecogniser.addTarget(self, action: #selector(handleTapEvent(sender:)))
-        addGestureRecognizer(tapGuestureRecogniser)
-        
+        self.controller = controller
     }
     
-    @objc private func handleTapEvent(sender: UITapGestureRecognizer) {
-       if sender.state == .ended {
-            if drawingColour == #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) {
-                drawingColour = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            } else {
-                drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            }
-            setNeedsDisplay()
-       }
+    @objc func handleTapEvent() {
+        if drawingColour == #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) {
+            drawingColour = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        } else {
+            drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        }
+        controller?.selectCard(with: self.card!)
+        setNeedsDisplay()
     }
     
     private func drawShape(){

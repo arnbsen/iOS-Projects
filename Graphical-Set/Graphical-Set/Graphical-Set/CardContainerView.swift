@@ -15,30 +15,34 @@ class CardContainerView: UIView {
             view.removeFromSuperview()
         }
         var (nrows, ncols) = getRowAndColumns()
-        let rowSpacing = rect.width.getCoordinateWith(ratio: 0.005)
-        let colSpacing = rect.height.getCoordinateWith(ratio: 0.005)
+        let rowSpacing = rect.height.getCoordinateWith(ratio: 0.005)
+        let colSpacing = rect.width.getCoordinateWith(ratio: 0.005)
         
         if rect.width < rect.height {
-            (nrows, ncols) = nrows < ncols ? (nrows, ncols) : (ncols, nrows)
+            (nrows, ncols) = nrows > ncols ? (nrows, ncols) : (ncols, nrows)
         } else {
-            (nrows, ncols) = nrows < ncols ? (ncols, nrows) : (nrows, ncols)
+            (nrows, ncols) = nrows > ncols ? (ncols, nrows) : (nrows, ncols)
         }
         
-        let optimumHeight = (rect.height - CGFloat(ncols - 1) * colSpacing) / CGFloat(ncols)
-        let optimunWidth = (rect.width - CGFloat(nrows - 1) * rowSpacing) / CGFloat(nrows)
+        let optimumHeight = (rect.height - CGFloat(nrows - 1) * rowSpacing) / CGFloat(nrows)
+        let optimunWidth = (rect.width - CGFloat(ncols - 1) * colSpacing) / CGFloat(ncols)
         var (X, Y) = (CGPoint.zero.x + colSpacing, CGPoint.zero.y + rowSpacing)
         var cardIterator = 0
         for _ in 0..<nrows {
-            Y = CGPoint.zero.y
+            X = CGPoint.zero.x
             for _ in 0..<ncols{
                 let cardDimensions = CGRect(x: CGFloat(X), y: CGFloat(Y), width: optimunWidth, height: optimumHeight)
-                let cardView = CardView(frame: cardDimensions, forCard: activePlayingCards[cardIterator])
+                let cardView = CardView(frame: cardDimensions, forCard: activePlayingCards[cardIterator], controller: controller! )
+                let tapGuesture = UITapGestureRecognizer()
+                tapGuesture.addTarget(cardView, action: #selector(cardView.handleTapEvent))
                 addSubview(cardView)
-                Y += rowSpacing + optimumHeight
+                cardView.addGestureRecognizer(tapGuesture)
+                X += colSpacing + optimunWidth
                 cardIterator += 1
             }
-            X += colSpacing + optimunWidth
+            Y += rowSpacing + optimumHeight
         }
+       
     }
     
     private func getRowAndColumns() -> (Int, Int){
@@ -55,6 +59,8 @@ class CardContainerView: UIView {
     
     
     var activePlayingCards = [Card]()
+    var game : Set?
+    var controller : ViewController?
     
 }
 
