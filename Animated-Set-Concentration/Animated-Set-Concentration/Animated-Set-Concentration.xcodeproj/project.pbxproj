@@ -20,6 +20,7 @@
 		4B3B190B21F0A3E500CE8D07 /* CardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190621F0A3E500CE8D07 /* CardContainerView.swift */; };
 		4B3B190C21F0A3E500CE8D07 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190721F0A3E500CE8D07 /* Set.swift */; };
 		4B3B190D21F0A3E500CE8D07 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190821F0A3E500CE8D07 /* SetViewController.swift */; };
+		4BF8E73F21F0F74B0026BFF1 /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8E73E21F0F74B0026BFF1 /* ThemeChooserViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4B3B190621F0A3E500CE8D07 /* CardContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContainerView.swift; sourceTree = "<group>"; };
 		4B3B190721F0A3E500CE8D07 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		4B3B190821F0A3E500CE8D07 /* SetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		4BF8E73E21F0F74B0026BFF1 /* ThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				4B3B190221F0A39100CE8D07 /* ConcentrationViewController.swift */,
 				4B3B18FF21F0A37A00CE8D07 /* Card.swift */,
 				4B3B18FE21F0A37A00CE8D07 /* Concentration.swift */,
+				4BF8E73E21F0F74B0026BFF1 /* ThemeChooserViewController.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				4B3B190921F0A3E500CE8D07 /* SetCard.swift in Sources */,
 				4B3B190D21F0A3E500CE8D07 /* SetViewController.swift in Sources */,
 				4B3B190B21F0A3E500CE8D07 /* CardContainerView.swift in Sources */,
+				4BF8E73F21F0F74B0026BFF1 /* ThemeChooserViewController.swift in Sources */,
 				4B3B190321F0A39100CE8D07 /* ConcentrationViewController.swift in Sources */,
 				4B3B18FB21F08C9100CE8D07 /* ViewController.swift in Sources */,
 				4B3B190A21F0A3E500CE8D07 /* CardView.swift in Sources */,
