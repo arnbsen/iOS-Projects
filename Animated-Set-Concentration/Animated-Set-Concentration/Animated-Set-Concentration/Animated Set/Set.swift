@@ -76,6 +76,9 @@ class Set {
                 activePlayingCards.append(deck.remove(at: rand_index))
             }
         }
+        if winningScore > 1 {
+            winningScore -= 1
+        }
     }
     
     private func checkCardsForMatch () -> Bool{

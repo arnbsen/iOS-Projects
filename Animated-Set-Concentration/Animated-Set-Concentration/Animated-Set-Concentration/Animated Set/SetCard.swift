@@ -11,8 +11,7 @@ struct SetCard : Equatable {
     var colourID : Int
     var shapeID : Int
     var shadingID : Int
-    
-    
+
     static func == (lhs: SetCard, rhs: SetCard) -> Bool {
         let numberCondition = lhs.numberOnCard == rhs.numberOnCard
         let colourCondition = lhs.colourID == rhs.colourID
