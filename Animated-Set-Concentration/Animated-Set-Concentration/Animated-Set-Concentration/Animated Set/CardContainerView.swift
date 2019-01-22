@@ -10,6 +10,7 @@ import UIKit
 
 class CardContainerView: UIView {
     
+    lazy var animator = UIDynamicAnimator(referenceView: self.superview!)
     
     private var activePlayingCardsView = [CardView]()
     var controller : SetViewController?
@@ -26,6 +27,7 @@ class CardContainerView: UIView {
     override func draw(_ rect: CGRect) {
         for view in subviews {
             if let stv = view as? UIStackView {
+                bringSubviewToFront(view)
                 deal3CardsBound = CGPoint(x: stv.frame.minX, y: stv.frame.minY - stv.frame.minY.getCoordinateWith(ratio: 0.025))
                 initFrame = CGRect(origin: CGPoint(x: stv.frame.minX, y: stv.frame.minY), size: (stv.subviews.first?.frame.size)!)
                 lastFrame = CGRect(origin: CGPoint(x: (stv.subviews.last?.frame.minX)! + stv.frame.minX, y: (stv.subviews.last?.frame.minY)!+stv.frame.minY) , size: (stv.subviews.last?.frame.size)!)
@@ -101,7 +103,8 @@ class CardContainerView: UIView {
             for cardView in activePlayingCardsView {
                 if !cards.contains(cardView.card!) {
                     //Animate
-                    cardView.exitAnimation(by: lastFrame!)
+                    bringSubviewToFront(cardView)
+                    cardView.exitAnimation(by: self.lastFrame!)
                     activePlayingCards.remove(at: activePlayingCards.index(of: cardView.card!)!)
                 }
             }
@@ -113,7 +116,9 @@ class CardContainerView: UIView {
                     let card = cards[notInCards[index]]
                     activePlayingCards[notInView[index]] = card
                     //Animate
-                    activePlayingCardsView[notInView[index]].exitAnimation(by: lastFrame!)
+                    let oldCardView = activePlayingCardsView[notInView[index]]
+                    bringSubviewToFront(oldCardView)
+                    oldCardView.exitAnimation(by: self.lastFrame!)
                     let cardView = CardView(frame: initFrame!, forCard: card)
                     activePlayingCardsView[notInView[index]] = cardView
                     let tapGuesture = UITapGestureRecognizer()
@@ -173,16 +178,19 @@ extension CardView {
         }, completion: nil)
     }
     func exitAnimation(by cardDimensions: CGRect) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.5, delay: 0.1, options: [.allowUserInteraction], animations: { [unowned self] in
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.75, delay: 0.1, options: [.allowAnimatedContent], animations: { [unowned self] in
             self.frame = cardDimensions
+            self.exitAnimationPrelim()
             }, completion: { (_) in
                 UIView.transition(with: self,
                                   duration: 0.75,
-                                  options: [.transitionFlipFromRight,.allowUserInteraction],
+                                  options: [.transitionFlipFromRight],
                                   animations: { [unowned self] in
                                     self.exitAnimation()
                     },
-                                  completion: nil)
+                                  completion: {(_) in
+                                    self.removeFromSuperview()
+                })
         })
         
     }

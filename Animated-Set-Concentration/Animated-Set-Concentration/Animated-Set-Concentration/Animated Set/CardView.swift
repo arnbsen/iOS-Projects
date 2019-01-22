@@ -59,6 +59,13 @@ class CardView: UIView {
         isAnimated = true
         setNeedsDisplay()
     }
+    
+    func exitAnimationPrelim () {
+        drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        setNeedsDisplay()
+    }
+    
+    
     func exitAnimation(){
         drawingColour = #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)
         isAnimated = false

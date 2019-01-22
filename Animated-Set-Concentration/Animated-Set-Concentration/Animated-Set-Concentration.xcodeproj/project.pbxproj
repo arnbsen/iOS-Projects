@@ -20,6 +20,7 @@
 		4B3B190B21F0A3E500CE8D07 /* CardContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190621F0A3E500CE8D07 /* CardContainerView.swift */; };
 		4B3B190C21F0A3E500CE8D07 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190721F0A3E500CE8D07 /* Set.swift */; };
 		4B3B190D21F0A3E500CE8D07 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B190821F0A3E500CE8D07 /* SetViewController.swift */; };
+		4B66668321F719B80023AF29 /* MyAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66668221F719B80023AF29 /* MyAnimator.swift */; };
 		4BF8E73F21F0F74B0026BFF1 /* ThemeChooserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8E73E21F0F74B0026BFF1 /* ThemeChooserViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		4B3B190621F0A3E500CE8D07 /* CardContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardContainerView.swift; sourceTree = "<group>"; };
 		4B3B190721F0A3E500CE8D07 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		4B3B190821F0A3E500CE8D07 /* SetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		4B66668221F719B80023AF29 /* MyAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnimator.swift; sourceTree = "<group>"; };
 		4BF8E73E21F0F74B0026BFF1 /* ThemeChooserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChooserViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 			children = (
 				4B3B190421F0A3E500CE8D07 /* SetCard.swift */,
 				4B3B190621F0A3E500CE8D07 /* CardContainerView.swift */,
+				4B66668221F719B80023AF29 /* MyAnimator.swift */,
 				4B3B190521F0A3E500CE8D07 /* CardView.swift */,
 				4B3B190721F0A3E500CE8D07 /* Set.swift */,
 				4B3B190821F0A3E500CE8D07 /* SetViewController.swift */,
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B66668321F719B80023AF29 /* MyAnimator.swift in Sources */,
 				4B3B190C21F0A3E500CE8D07 /* Set.swift in Sources */,
 				4B3B190121F0A37A00CE8D07 /* Card.swift in Sources */,
 				4B3B190021F0A37A00CE8D07 /* Concentration.swift in Sources */,
