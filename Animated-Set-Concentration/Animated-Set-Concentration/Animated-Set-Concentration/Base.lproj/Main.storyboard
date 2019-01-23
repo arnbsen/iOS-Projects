@@ -103,7 +103,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bso-Av-OGG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yv8-IQ-rZW">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -349,6 +349,9 @@
                                 <state key="normal" title="      New Game     ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="newGame:" destination="avB-AR-oED" eventType="touchUpInside" id="yVQ-dg-tkA"/>
+                                </connections>
                             </button>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-qF-Wfh" customClass="CardContainerView" customModule="Animated_Set_Concentration" customModuleProvider="target">
                                 <rect key="frame" x="5" y="105" width="365" height="624"/>

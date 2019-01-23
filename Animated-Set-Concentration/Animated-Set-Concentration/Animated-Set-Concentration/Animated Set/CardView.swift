@@ -8,11 +8,13 @@
 
 import UIKit
 
-class CardView: UIView {
+class CardView: UIView, UIDynamicAnimatorDelegate {
 
    
     override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(roundedRect: bounds, cornerRadius: rect.width.getCoordinateWith(ratio: 0.10))
+        let cornerRadius = rect.width < rect.height ? rect.width.getCoordinateWith(ratio: 0.10) :
+        rect.height.getCoordinateWith(ratio: 0.1)
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         path.addClip()
         drawingColour.setFill()
         path.fill()
@@ -60,17 +62,43 @@ class CardView: UIView {
         setNeedsDisplay()
     }
     
-    func exitAnimationPrelim () {
+    private func exitAnimationPrelim () {
         drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setNeedsDisplay()
     }
     
     
-    func exitAnimation(){
+    private func exitAnimationSecond(){
         drawingColour = #colorLiteral(red: 0.6078431373, green: 0.6078431373, blue: 0.6078431373, alpha: 1)
         isAnimated = false
         setNeedsDisplay()
     }
+    
+    func exitAnimation(with multiplier: CGFloat,onComplete: ((Bool) -> Void)?) {
+        if let lastFrame  = (superview as? CardContainerView)?.lastFrame {
+            UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.75,
+                                                           delay: TimeInterval(multiplier * 0.2),
+                                                           options: [],
+                                                           animations: { [weak self] in
+                                                                self?.exitAnimationPrelim()
+                                                                self?.frame = lastFrame
+            },
+                                                           completion:  { (_) in
+                                                            UIView.transition(with: self,
+                                                                              duration: 0.75,
+                                                                              options: [.transitionFlipFromRight],
+                                                                              animations: { [weak self] in
+                                                                                self?.exitAnimationSecond()
+                                                                },
+                                                                              completion: onComplete)
+            })
+        }
+        
+    }
+    
+    
+    
+    
     private func drawShape(){
         
             let (startX, startY) = (bounds.maxX.computeCardX, bounds.maxY.computeCardY)

@@ -13,15 +13,15 @@ class MyBehaviour: UIDynamicBehavior {
     lazy private var collisionBehavior : UICollisionBehavior = {
         let coll = UICollisionBehavior()
         coll.translatesReferenceBoundsIntoBoundary = true
-        coll.collisionMode = .everything
+        coll.collisionMode = [.boundaries]
         return coll
     }()
     
     lazy private var itemBehaviour : UIDynamicItemBehavior = {
        let ib = UIDynamicItemBehavior()
         ib.elasticity = 1.0
-        ib.resistance = 0
-        ib.allowsRotation = false
+        ib.resistance = 0.5
+        ib.allowsRotation = true
         return ib
     }()
     
@@ -31,6 +31,7 @@ class MyBehaviour: UIDynamicBehavior {
         push.action = { [unowned push, weak self] in
                 self?.removeChildBehavior(push)
         }
+        push.magnitude = 7.0
         addChildBehavior(push)
     }
     func addItem(_ item: UIDynamicItem) {

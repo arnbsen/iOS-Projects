@@ -8,30 +8,52 @@
 
 import UIKit
 
-class CardContainerView: UIView {
+class CardContainerView: UIView, UIDynamicAnimatorDelegate {
     
-    lazy var animator = UIDynamicAnimator(referenceView: self.superview!)
+    lazy var animator : UIDynamicAnimator  = {
+        let animator = UIDynamicAnimator(referenceView: self)
+            animator.delegate = self
+            return animator
+        
+    }()
     
     private var activePlayingCardsView = [CardView]()
     var controller : SetViewController?
-    var activePlayingCards = [SetCard]()
+    private var activePlayingCards = [SetCard]()
     private var initFrame : CGRect?
     private var deal3CardsBound : CGPoint?
     private var selectedCards = [CardView]()
-    private var lastFrame : CGRect?
+    var lastFrame : CGRect?
+    private var discardedCards = [CardView]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    func startGame(with cards: [SetCard]) {
+        activePlayingCards.removeAll()
+        activePlayingCards.append(contentsOf: cards)
+        for view in subviews {
+            if let cv = view as? CardView {
+                cv.removeFromSuperview()
+            }
+        }
+        activePlayingCardsView.removeAll()
+        setNeedsDisplay()
+    }
+    
+    
     override func draw(_ rect: CGRect) {
         for view in subviews {
             if let stv = view as? UIStackView {
-                bringSubviewToFront(view)
+                view.layer.zPosition = 5.0
                 deal3CardsBound = CGPoint(x: stv.frame.minX, y: stv.frame.minY - stv.frame.minY.getCoordinateWith(ratio: 0.025))
                 initFrame = CGRect(origin: CGPoint(x: stv.frame.minX, y: stv.frame.minY), size: (stv.subviews.first?.frame.size)!)
                 lastFrame = CGRect(origin: CGPoint(x: (stv.subviews.last?.frame.minX)! + stv.frame.minX, y: (stv.subviews.last?.frame.minY)!+stv.frame.minY) , size: (stv.subviews.last?.frame.size)!)
             }
+        }
+        if let card = discardedCards.first {
+            card.frame = lastFrame!
         }
         
         var (nrows, ncols) = getRowAndColumns()
@@ -55,8 +77,8 @@ class CardContainerView: UIView {
                     let cardDimensions = CGRect(x: CGFloat(X), y: CGFloat(Y), width: optimunWidth, height: optimumHeight)
                     let cardView = CardView(frame: initFrame!, forCard: activePlayingCards[cardIterator])
                     activePlayingCardsView.append(cardView)
+                    cardView.layer.zPosition = 1.0
                     addSubview(cardView)
-                    sendSubviewToBack(cardView)
                     X += colSpacing + optimunWidth
                     cardIterator += 1
                     let tapGuesture = UITapGestureRecognizer()
@@ -75,7 +97,6 @@ class CardContainerView: UIView {
                         activePlayingCardsView[cardIterator].existingCardAnimation(by: cardDimensions)
                     } else {
                         addSubview(activePlayingCardsView[cardIterator])
-                        sendSubviewToBack(activePlayingCardsView[cardIterator])
                         activePlayingCardsView[cardIterator].initAnimation(by: cardDimensions, delayedBy: 0.1 * Double(cardIterator))
                     }
                     X += colSpacing + optimunWidth
@@ -86,28 +107,37 @@ class CardContainerView: UIView {
                 Y += rowSpacing + optimumHeight
             }
         }
+        
     }
+    
+    
+    
     func updateSubviewsFromModel(with cards: [SetCard]) {
         if activePlayingCards.count < cards.count {
             for card in cards {
                 if !activePlayingCards.contains(card) {
                     activePlayingCards.append(card)
                     let cardView = CardView(frame: initFrame!, forCard: card)
+                    cardView.layer.zPosition = 1.0
                     activePlayingCardsView.append(cardView)
                     let tapGuesture = UITapGestureRecognizer()
                     tapGuesture.addTarget(self, action: #selector(handleTapEvent(sender:)))
                     cardView.addGestureRecognizer(tapGuesture)
                 }
             }
+            setNeedsDisplay()
         } else if activePlayingCards.count > cards.count {
             for cardView in activePlayingCardsView {
                 if !cards.contains(cardView.card!) {
                     //Animate
-                    bringSubviewToFront(cardView)
-                    cardView.exitAnimation(by: self.lastFrame!)
+                    //animateOnSameNumberOfCards(with: cardView, with: self.lastFrame!)
+                    discardedCards.append(cardView)
+                    let myBehavior = MyBehaviour(in: self.animator)
+                    myBehavior.addItem(cardView)
                     activePlayingCards.remove(at: activePlayingCards.index(of: cardView.card!)!)
                 }
             }
+            setNeedsDisplay()
         } else {
             let notInView = activePlayingCards.indices.filter { !cards.contains(activePlayingCards[$0]) }
             let notInCards = cards.indices.filter { !activePlayingCards.contains(cards[$0]) }
@@ -117,9 +147,11 @@ class CardContainerView: UIView {
                     activePlayingCards[notInView[index]] = card
                     //Animate
                     let oldCardView = activePlayingCardsView[notInView[index]]
-                    bringSubviewToFront(oldCardView)
-                    oldCardView.exitAnimation(by: self.lastFrame!)
+                    let myBehavior = MyBehaviour(in: self.animator)
+                    myBehavior.addItem(oldCardView)
+                    discardedCards.append(oldCardView)
                     let cardView = CardView(frame: initFrame!, forCard: card)
+                    cardView.layer.zPosition = 1.0
                     activePlayingCardsView[notInView[index]] = cardView
                     let tapGuesture = UITapGestureRecognizer()
                     tapGuesture.addTarget(self, action: #selector(handleTapEvent(sender:)))
@@ -132,9 +164,41 @@ class CardContainerView: UIView {
             }
            
         }
-        
-        setNeedsDisplay()
     }
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
+        
+        let lastLeftCard = discardedCards.first
+        
+        for index in discardedCards.indices {
+            if let last = discardedCards.indices.last, last == index {
+                let lastCard = discardedCards[index]
+                lastCard.exitAnimation(with: CGFloat(index), onComplete: {
+                    (_) in
+                    self.setNeedsDisplay()
+                    self.discardedCards.removeAll()
+                    self.discardedCards.append(lastCard)
+                    animator.removeAllBehaviors()
+                })
+            } else {
+                if let card = lastLeftCard, lastLeftCard == discardedCards[index] {
+                    card.removeFromSuperview()
+                }
+                discardedCards[index].exitAnimation(with: CGFloat(index),onComplete: {
+                    (_) in
+                    self.discardedCards[index].removeFromSuperview()
+                })
+            }
+            
+        }
+        
+    }
+        
+        
+    
+    
+    
+    
+    
     
     private func getRowAndColumns() -> (Int, Int){
         assert(activePlayingCards.count >= 3, "Card Count not Expected: \(activePlayingCards.count)")
@@ -177,21 +241,6 @@ extension CardView {
             self.frame = cardDimensions
         }, completion: nil)
     }
-    func exitAnimation(by cardDimensions: CGRect) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.75, delay: 0.1, options: [.allowAnimatedContent], animations: { [unowned self] in
-            self.frame = cardDimensions
-            self.exitAnimationPrelim()
-            }, completion: { (_) in
-                UIView.transition(with: self,
-                                  duration: 0.75,
-                                  options: [.transitionFlipFromRight],
-                                  animations: { [unowned self] in
-                                    self.exitAnimation()
-                    },
-                                  completion: {(_) in
-                                    self.removeFromSuperview()
-                })
-        })
-        
-    }
+    
+       
 }

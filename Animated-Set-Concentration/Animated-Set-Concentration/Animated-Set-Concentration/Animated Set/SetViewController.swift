@@ -32,7 +32,11 @@ class SetViewController: UIViewController {
     }
     
     
-
+    @IBAction func newGame(_ sender: Any) {
+        game = Set()
+        cardContainer.startGame(with: game.activePlayingCards)
+    }
+    
 
     @IBOutlet weak var cardContainer: CardContainerView! {
         didSet {
@@ -43,8 +47,7 @@ class SetViewController: UIViewController {
             swipeGesture.direction = .down
             cardContainer.addGestureRecognizer(swipeGesture)
             cardContainer.addGestureRecognizer(rotationGuesture)
-            cardContainer.activePlayingCards.append(contentsOf: game.activePlayingCards)
-            cardContainer.updateSubviewsFromModel(with: game.activePlayingCards)
+            cardContainer.startGame(with: game.activePlayingCards)
         }
     }
 
