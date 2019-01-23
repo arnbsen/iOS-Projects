@@ -48,6 +48,7 @@ class Set {
         }
         
         if selectedCards.count == 3 {
+           selectedCards.removeAll()
            return checkCardsForMatch()
         } else {
             return false
