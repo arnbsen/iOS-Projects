@@ -48,7 +48,6 @@ class Set {
         }
         
         if selectedCards.count == 3 {
-           selectedCards.removeAll()
            return checkCardsForMatch()
         } else {
             return false
@@ -95,6 +94,8 @@ class Set {
                 let index = activePlayingCards.index(of: card)!
                 if deck.count > 0 {
                     activePlayingCards[index] = deck.remove(at: deck.count.arc4random)
+                } else {
+                    activePlayingCards.remove(at: index)
                 }
             }
             score += winningScore

@@ -25,7 +25,7 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
     private var selectedCards = [CardView]()
     var lastFrame : CGRect?
     private var discardedCards = [CardView]()
-    
+    private var calledOnce = false
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -89,6 +89,7 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                 Y += rowSpacing + optimumHeight
             }
         } else {
+            var newCardAnimatorMultiplier = 1
             for _ in 0..<nrows {
                 X = CGPoint.zero.x
                 for _ in 0..<ncols{
@@ -97,10 +98,10 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                         activePlayingCardsView[cardIterator].existingCardAnimation(by: cardDimensions)
                     } else {
                         addSubview(activePlayingCardsView[cardIterator])
-                        activePlayingCardsView[cardIterator].initAnimation(by: cardDimensions, delayedBy: 0.1 * Double(cardIterator))
+                        activePlayingCardsView[cardIterator].initAnimation(by: cardDimensions, delayedBy: 0.3 * Double(newCardAnimatorMultiplier))
+                        newCardAnimatorMultiplier += 1
                     }
                     X += colSpacing + optimunWidth
-                    activePlayingCardsView[cardIterator].setNeedsDisplay()
                     cardIterator += 1
                     
                 }
@@ -148,6 +149,7 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                     activePlayingCards[notInView[index]] = card
                     //Animate
                     let oldCardView = activePlayingCardsView[notInView[index]]
+                    oldCardView.layer.zPosition = 2.0
                     let myBehavior = MyBehaviour(in: self.animator)
                     myBehavior.addItem(oldCardView)
                     discardedCards.append(oldCardView)
@@ -161,24 +163,32 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
             } else {
                 for cards in activePlayingCardsView {
                     cards.resetFillColour()
+
                 }
             }
            
         }
     }
     func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
-        
+    
         let lastLeftCard = discardedCards.first
+        if calledOnce {
+            calledOnce = false
+            return
+        } else {
+            calledOnce = true
+        }
         
         for index in discardedCards.indices {
             if let last = discardedCards.indices.last, last == index {
                 let lastCard = discardedCards[index]
                 lastCard.exitAnimation(with: CGFloat(index), onComplete: {
                     (_) in
-                    self.setNeedsDisplay()
                     self.discardedCards.removeAll()
                     self.discardedCards.append(lastCard)
+                    self.controller?.changeScoreLabel()
                     animator.removeAllBehaviors()
+                    self.setNeedsDisplay()
                 })
             } else {
                 if let card = lastLeftCard, lastLeftCard == discardedCards[index] {
@@ -193,13 +203,6 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
         }
         
     }
-        
-        
-    
-    
-    
-    
-    
     
     private func getRowAndColumns() -> (Int, Int){
         assert(activePlayingCards.count >= 3, "Card Count not Expected: \(activePlayingCards.count)")
@@ -227,10 +230,11 @@ extension CardView {
     func initAnimation(by cardDimensions: CGRect, delayedBy by: Double) {
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: by, options: [.allowUserInteraction], animations: { [unowned self] in
            self.frame = cardDimensions
+            
         }, completion: { (_) in
             UIView.transition(with: self,
-                              duration: 0.75,
-                              options: [.transitionFlipFromRight,.allowUserInteraction],
+                              duration: 1.0,
+                              options: [.transitionFlipFromRight],
                               animations: { [unowned self] in
                                 self.initAnimation()
             },

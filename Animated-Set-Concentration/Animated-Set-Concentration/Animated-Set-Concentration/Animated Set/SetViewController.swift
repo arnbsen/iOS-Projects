@@ -12,7 +12,6 @@ class SetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViewFromModel()
     }
     lazy var game = Set()
     @IBOutlet weak var newGameButton: UIButton! {
@@ -35,6 +34,7 @@ class SetViewController: UIViewController {
     @IBAction func newGame(_ sender: Any) {
         game = Set()
         cardContainer.startGame(with: game.activePlayingCards)
+        scoreLabel.text = "Score: \(game.score)"
     }
     
 
@@ -70,7 +70,11 @@ class SetViewController: UIViewController {
         game.deal3Cards()
         updateViewFromModel()
     }
-    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!{
+        didSet{
+            scoreLabel.text = "Score: \(game.score)"
+        }
+    }
 
     func changeScoreLabel () {
         scoreLabel.text = "Score: \(game.score)"
@@ -79,11 +83,11 @@ class SetViewController: UIViewController {
     func selectCard(with card: SetCard) {
         if game.toggleCard(with: card) {
             updateViewFromModel()
+            changeScoreLabel()
         }
     }
 
     private func updateViewFromModel() {
-        scoreLabel.text = "Score: \(game.score)"
         cardContainer.updateSubviewsFromModel(with: game.activePlayingCards)
     }
 }

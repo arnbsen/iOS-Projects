@@ -64,7 +64,6 @@ class CardView: UIView, UIDynamicAnimatorDelegate {
     
     private func exitAnimationPrelim () {
         drawingColour = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        setNeedsDisplay()
     }
     
     
@@ -78,7 +77,7 @@ class CardView: UIView, UIDynamicAnimatorDelegate {
         if let lastFrame  = (superview as? CardContainerView)?.lastFrame {
             UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.75,
                                                            delay: TimeInterval(multiplier * 0.2),
-                                                           options: [],
+                                                           options: [.allowAnimatedContent],
                                                            animations: { [weak self] in
                                                                 self?.exitAnimationPrelim()
                                                                 self?.frame = lastFrame
