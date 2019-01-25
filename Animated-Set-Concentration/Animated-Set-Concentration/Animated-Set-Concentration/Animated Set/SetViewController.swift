@@ -83,7 +83,6 @@ class SetViewController: UIViewController {
     func selectCard(with card: SetCard) {
         if game.toggleCard(with: card) {
             updateViewFromModel()
-            changeScoreLabel()
         }
     }
 

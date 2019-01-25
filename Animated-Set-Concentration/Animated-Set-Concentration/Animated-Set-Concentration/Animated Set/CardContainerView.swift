@@ -165,6 +165,7 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                     cards.resetFillColour()
 
                 }
+                controller?.changeScoreLabel()
             }
            
         }

@@ -18,8 +18,12 @@ class ConcentrationViewController: UIViewController {
     var currentSelection = 3 {
         didSet {
             if cardButtons != nil {
+                if currentSelection == 3  {
+                    currentSelection = 2.arc4random
+                }
                 updateTheme()
             }
+            
         }
     }
     
@@ -32,6 +36,7 @@ class ConcentrationViewController: UIViewController {
         emoji = [Int: String]()
         scoreLabel.textColor = currentCardBackColour
         newGameButton.setTitleColor(currentCardBackColour, for: UIControl.State.normal)
+        self.view.backgroundColor = currentBackgroudColour
         updateViewFromModel()
     }
     
@@ -68,6 +73,7 @@ class ConcentrationViewController: UIViewController {
     
     @IBAction private func newGame(_ sender: UIButton) {
         restartGame()
+        updateTheme()
     }
     
     
@@ -102,16 +108,15 @@ class ConcentrationViewController: UIViewController {
         }
     }
     private func restartGame() {
+        game = Concetration(noOfPairsOfCards: cardButtons.count/2)
+        emoji.removeAll()
         currentSelection = emojiGallery.count.arc4random
         emojiChoices = emojiGallery[currentSelection]
-        game = Concetration(noOfPairsOfCards: cardButtons.count/2)
-        emoji = [Int: String]()
         currentBackgroudColour = backgroudColour[currentSelection]
         currentCardBackColour = cardBackColour[currentSelection]
         scoreLabel.textColor = currentCardBackColour
         self.view.backgroundColor = currentBackgroudColour
         newGameButton.setTitleColor(currentCardBackColour, for: UIControl.State.normal)
-        updateViewFromModel()
     }
     
     
