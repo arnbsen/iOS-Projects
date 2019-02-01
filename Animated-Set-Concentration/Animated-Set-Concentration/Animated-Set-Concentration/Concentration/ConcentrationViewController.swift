@@ -111,12 +111,6 @@ class ConcentrationViewController: UIViewController {
         game = Concetration(noOfPairsOfCards: cardButtons.count/2)
         emoji.removeAll()
         currentSelection = emojiGallery.count.arc4random
-        emojiChoices = emojiGallery[currentSelection]
-        currentBackgroudColour = backgroudColour[currentSelection]
-        currentCardBackColour = cardBackColour[currentSelection]
-        scoreLabel.textColor = currentCardBackColour
-        self.view.backgroundColor = currentBackgroudColour
-        newGameButton.setTitleColor(currentCardBackColour, for: UIControl.State.normal)
     }
     
     
