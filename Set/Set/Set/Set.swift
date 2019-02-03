@@ -75,7 +75,7 @@ class Set {
         let (first, second, third) = (selectedCards[0], selectedCards[1], selectedCards[2])
         let condition =
             Card.compareColourID(first: first, second: second, third: third) &&
-            Card.compareNumber(first: first, second: first, third: first) &&
+            Card.compareNumber(first: first, second: second, third: third) &&
             Card.compareShadingID(first: first, second: second, third: third) &&
             Card.compareColourID(first: first, second: second, third: third)
         

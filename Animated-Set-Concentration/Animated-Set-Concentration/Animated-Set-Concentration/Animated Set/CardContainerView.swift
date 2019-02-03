@@ -163,7 +163,6 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
             } else {
                 for cards in activePlayingCardsView {
                     cards.resetFillColour()
-
                 }
                 controller?.changeScoreLabel()
             }

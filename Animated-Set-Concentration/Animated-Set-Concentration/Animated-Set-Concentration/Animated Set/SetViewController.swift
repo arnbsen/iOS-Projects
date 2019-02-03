@@ -88,5 +88,6 @@ class SetViewController: UIViewController {
 
     private func updateViewFromModel() {
         cardContainer.updateSubviewsFromModel(with: game.activePlayingCards)
+        
     }
 }
