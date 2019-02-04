@@ -23,30 +23,54 @@
             </objects>
             <point key="canvasLocation" x="-2120" y="315"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Your Galleries-->
         <scene sceneID="hmd-uU-9SJ">
             <objects>
-                <tableViewController id="ktD-2m-Tvu" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t1T-Ox-8dm">
+                <tableViewController id="ktD-2m-Tvu" customClass="GalleryListTableViewController" customModule="Image_Gallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t1T-Ox-8dm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Osg-Zb-Jtk">
+                            <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Gallery Cell" id="FlR-7N-ctC" customClass="GalleryTableViewCell" customModule="Image_Gallery" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Osg-Zb-Jtk" id="07G-S5-StH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FlR-7N-ctC" id="LeO-Aq-FVh">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yJ0-JN-Vgo">
+                                            <rect key="frame" x="20" y="7" width="280" height="30"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="yJ0-JN-Vgo" firstAttribute="centerY" secondItem="LeO-Aq-FVh" secondAttribute="centerY" id="Xxe-7C-lci"/>
+                                        <constraint firstAttribute="trailing" secondItem="yJ0-JN-Vgo" secondAttribute="trailing" constant="20" symbolic="YES" id="cRl-3k-QDo"/>
+                                        <constraint firstItem="yJ0-JN-Vgo" firstAttribute="centerX" secondItem="LeO-Aq-FVh" secondAttribute="centerX" id="jE4-UY-OsC"/>
+                                        <constraint firstItem="yJ0-JN-Vgo" firstAttribute="leading" secondItem="LeO-Aq-FVh" secondAttribute="leading" constant="20" symbolic="YES" id="yyc-aw-wJQ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="yJ0-JN-Vgo" id="bPm-Qf-O1q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="ktD-2m-Tvu" id="0bW-bb-1bt"/>
                             <outlet property="delegate" destination="ktD-2m-Tvu" id="fbf-B2-bQT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bwQ-Sx-jyZ"/>
+                    <navigationItem key="navigationItem" title="Your Galleries" id="bwQ-Sx-jyZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aqE-Vg-qUw">
+                            <connections>
+                                <action selector="addRows:" destination="ktD-2m-Tvu" id="N0w-Ad-8JF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DY-2X-Lrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
