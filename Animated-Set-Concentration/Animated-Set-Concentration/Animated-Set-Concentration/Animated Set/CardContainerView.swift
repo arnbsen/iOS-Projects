@@ -166,7 +166,6 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                 }
                 controller?.changeScoreLabel()
             }
-           
         }
     }
     func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
@@ -228,13 +227,12 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
 }
 extension CardView {
     func initAnimation(by cardDimensions: CGRect, delayedBy by: Double) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: by, options: [.allowUserInteraction], animations: { [unowned self] in
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: by, options: [.allowUserInteraction,.allowAnimatedContent], animations: { [unowned self] in
            self.frame = cardDimensions
-            
         }, completion: { (_) in
             UIView.transition(with: self,
                               duration: 1.0,
-                              options: [.transitionFlipFromRight],
+                              options: [.transitionFlipFromRight, .allowAnimatedContent],
                               animations: { [unowned self] in
                                 self.initAnimation()
             },
@@ -242,9 +240,12 @@ extension CardView {
         })
     }
     func existingCardAnimation(by cardDimensions: CGRect) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.1, options: [.allowUserInteraction], animations: { [unowned self] in
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.1, options: [.allowUserInteraction, .allowAnimatedContent], animations: { [unowned self] in
             self.frame = cardDimensions
-        }, completion: nil)
+            }, completion: {
+                (_) in
+                self.setNeedsDisplay()
+        })
     }
     
        

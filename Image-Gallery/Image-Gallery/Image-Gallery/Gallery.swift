@@ -9,9 +9,6 @@
 import Foundation
 struct Gallery : Equatable {
 
-    static func == (lhs: Gallery, rhs: Gallery) -> Bool {
-        return lhs.galleryName == rhs.galleryName
-    }
     var galleryName : String
     var imageURLs = [URL]()
     var isDeleted = false

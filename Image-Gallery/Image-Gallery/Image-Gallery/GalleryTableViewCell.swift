@@ -8,8 +8,11 @@
 
 import UIKit
 
-class GalleryTableViewCell: UITableViewCell, UITextFieldDelegate {
+class GalleryTableViewCell: UITableViewCell {
 
+   
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,18 +24,8 @@ class GalleryTableViewCell: UITableViewCell, UITextFieldDelegate {
         // Configure the view for the selected state
     }
     
-    @IBOutlet weak var textField: UITextField! {
-        didSet {
-            let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(handleTapEvent(sender:)))
-            tapGuesture.numberOfTapsRequired = 2
-            addGestureRecognizer(tapGuesture)
-        }
-    }
     
-    @objc private func handleTapEvent(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            textField.isEnabled = true
-            textField.becomeFirstResponder()
-        }
-    }
+    @IBOutlet weak var textField: UITextField!
+    
+    
 }
