@@ -29,23 +29,29 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
+            collectionView.dataSource = self
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gallery.imageURLs.count
+        if gallery == nil {
+            return 0
+        } else {
+            return gallery.imageURLs.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Image Cell", for: indexPath)
-        if let ivc = cell as? GalleryCollectionViewCell {
-            ivc.spinner.isHidden = false
-            ivc.imageView.isHidden = true
+        if let gvc = cell as? GalleryCollectionViewCell {
+            gvc.spinner.isHidden = false
         }
         return cell
     }
     
-    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     @IBOutlet weak var dropZone: UIView! {
         didSet {
@@ -67,25 +73,33 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         session.loadObjects(ofClass: NSURL.self) { urls in
-            self.gallery.imageURLs.append(urls.first as! URL)
-            self.loadNewImage(with: urls.first as! URL)
-            self.collectionView.insertItems(at: [IndexPath(row: self.gallery.imageURLs.count - 1, section: 0)])
+            if let link = urls[0] as? URL {
+            self.collectionView.performBatchUpdates({
+                self.gallery.imageURLs.append(link)
+                let indexPath = IndexPath(row: self.gallery.imageURLs.count - 1, section: 0)
+                self.collectionView.insertItems(at: [indexPath])
+                self.loadNewImage(with: link, at: indexPath)
+            }, completion: nil)
+               
+                
+            }
         }
     }
     
-    private func loadNewImage(with url: URL) {
-        let session = URLSession(configuration: .default)
-        let indexPath = IndexPath(row: self.gallery.imageURLs.count - 1, section: 0)
-        let task = session.dataTask(with: url.imageURL) { (data: Data?, response, error) in
-            DispatchQueue.main.async { [weak self] in
-                if let ivc = self?.collectionView.cellForItem(at: indexPath) as? GalleryCollectionViewCell {
-                    ivc.imageView.isHidden = false
-                    ivc.imageView.image = UIImage(data: data!)
-                    ivc.spinner.isHidden = true
+    private func loadNewImage(with url: URL, at indexPath: IndexPath) {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        if let gvc = self?.collectionView.cellForItem(at: indexPath) as? GalleryCollectionViewCell {
+                            image.draw(in: gvc.bounds)
+                            gvc.imageView.image = image
+                            gvc.spinner.isHidden = true
+                        }
+                    }
                 }
             }
         }
-        task.resume()
     }
     
 }

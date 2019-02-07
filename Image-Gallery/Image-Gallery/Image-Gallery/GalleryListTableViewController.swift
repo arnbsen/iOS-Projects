@@ -126,14 +126,23 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
         return true
     }
     */
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "To CollectionView", sender: indexPath)
+        }
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "To CollectionView" {
+            if let indexPath = sender as? IndexPath {
+                if let destination = segue.destination.setTitleAndReturnGalleryCollectionView(with: galleries[indexPath.section][indexPath.row].galleryName) as? GalleryCollectionViewController {
+                    destination.gallery = galleries[indexPath.section][indexPath.row]
+                } 
+            }
+        }
     }
     
     
@@ -164,7 +173,20 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
                 textField.text = galleries[cdc.section][cdc.row].galleryName
             }
         }
+        textField.isEnabled = false
         currentDoubleTappedCell = nil
     }
     
 }
+extension UIViewController {
+    
+    func setTitleAndReturnGalleryCollectionView(with title: String) -> UIViewController? {
+        if let navcon  = self as? UINavigationController {
+            navcon.navigationBar.topItem?.title = title
+            return navcon.topViewController
+        } else {
+            return self
+        }
+    }
+}
+

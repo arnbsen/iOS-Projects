@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Gallery : Equatable {
+class Gallery {
 
     var galleryName : String
     var imageURLs = [URL]()
