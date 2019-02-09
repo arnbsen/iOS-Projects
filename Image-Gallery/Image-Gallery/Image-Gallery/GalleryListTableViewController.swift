@@ -30,9 +30,12 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if splitViewController?.preferredDisplayMode != .primaryOverlay {
-            splitViewController?.preferredDisplayMode = .primaryOverlay
+        if traitCollection.verticalSizeClass == .compact {
+            if splitViewController?.preferredDisplayMode != .primaryOverlay {
+                splitViewController?.preferredDisplayMode = .primaryOverlay
+            }
         }
+        
     }
     
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -133,18 +136,25 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
     }
     
     // MARK: - Navigation
-
+    private var splitViewControllerDetail : UINavigationController? {
+        return splitViewController?.viewControllers.last as? UINavigationController
+    }
+    
+    private var lastSequedToCollectionViewController : GalleryCollectionViewController?
+    private var lastIndexPath : IndexPath?
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "To CollectionView" {
             if let indexPath = sender as? IndexPath {
                 if let destination = segue.destination.setTitleAndReturnGalleryCollectionView(with: galleries[indexPath.section][indexPath.row].galleryName) as? GalleryCollectionViewController {
+                    lastSequedToCollectionViewController = destination
                     destination.gallery = galleries[indexPath.section][indexPath.row]
+                    destination.reloadImages()
                 } 
             }
         }
     }
-    
     
     
     private var currentDoubleTappedCell : IndexPath?
@@ -166,11 +176,17 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         //MARK: To handle blanks
+        func setTitle(sender cdc: IndexPath) {
+            splitViewControllerDetail?.navigationBar.topItem?.title = galleries[cdc.section][cdc.row].galleryName
+        }
+        
         if let cdc = currentDoubleTappedCell {
             if let txt = textField.text, txt.count > 0 {
                 galleries[cdc.section][cdc.row].galleryName = txt
+                setTitle(sender: cdc)
             } else {
                 textField.text = galleries[cdc.section][cdc.row].galleryName
+                setTitle(sender: cdc)
             }
         }
         textField.isEnabled = false

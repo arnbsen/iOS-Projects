@@ -240,7 +240,7 @@ extension CardView {
         })
     }
     func existingCardAnimation(by cardDimensions: CGRect) {
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.1, options: [.allowUserInteraction, .allowAnimatedContent], animations: { [unowned self] in
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.1, options: [.allowAnimatedContent], animations: { [unowned self] in
             self.frame = cardDimensions
             }, completion: {
                 (_) in
