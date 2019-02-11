@@ -51,9 +51,6 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Image Cell", for: indexPath)
-        if let gvc = cell as? GalleryCollectionViewCell {
-            gvc.imageView.image = nil
-        }
         return cell
     }
     
@@ -72,25 +69,19 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
             scaleFactor = 1.0
         }
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-        UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if let size = collectionView.cellForItem(at: indexPath)?.bounds.size {
-            if size.width > collectionView.bounds.width {
-                currentCellSize = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.width)
-                return currentCellSize
-            } else if size.width < 100 {
-                currentCellSize = CGSize(width: 100, height: 100)
-                return currentCellSize
-            } else {
-                return CGSize(width: currentCellSize.width * scaleFactor, height: currentCellSize.height * scaleFactor)
-            }
-        } else {
-            return currentCellSize
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let gvc = collectionView.cellForItem(at: indexPath) as? GalleryCollectionViewCell, let imageSize = gvc.imageView?.image?.size {
+            return calculateFrameForGVC(with: imageSize)
         }
-        
+        return currentCellSize
     }
     
-    
+    private func calculateFrameForGVC(with imageSize: CGSize) -> CGSize {
+        let factor =  (scaleFactor * currentCellSize.width) / imageSize.width
+        let returnSize = CGSize(width: scaleFactor * currentCellSize.width, height: factor * imageSize.height)
+        return returnSize
+    }
     //MARK: Configuration of Flow Layout
     
     var flowLayout: UICollectionViewFlowLayout? {
@@ -98,7 +89,13 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     }
     
     var scaleFactor : CGFloat = 1.0
-    var currentCellSize = CGSize(width: 100, height: 100)
+    var currentCellSize = CGSize(width: 200, height: 200) {
+        didSet {
+            if currentCellSize.width >= collectionView.frame.width {
+                currentCellSize = CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
+            }
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)
@@ -162,8 +159,9 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         if let gvc = self?.collectionView.cellForItem(at: indexPath) as? GalleryCollectionViewCell {
-                            image.draw(in: gvc.bounds)
                             gvc.imageView.image = image
+                            gvc.frame.size = (self?.calculateFrameForGVC(with: image.size))!
+                            
                         }
                     }
                 }
@@ -192,6 +190,23 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
         for item in gallery.imageURLs.indices {
             let indexPath = IndexPath(row: item, section: 0)
             loadNewImage(with: gallery.imageURLs[item], at: indexPath)
+        }
+    }
+    
+    //MARK: Navigation
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Show Image", sender: indexPath)
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Image" {
+            if let indexPath = sender as? IndexPath {
+                if let ivc = segue.destination as? ImageViewController {
+                    ivc.url = gallery?.imageURLs[indexPath.row].imageURL
+                }
+            }
         }
     }
 }

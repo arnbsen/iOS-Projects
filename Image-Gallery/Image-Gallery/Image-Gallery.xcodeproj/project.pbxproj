@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B383446220FF15C00A41E60 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B383445220FF15C00A41E60 /* ImageViewController.swift */; };
 		4B7D11BC220B352F00063223 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7D11BB220B352F00063223 /* GalleryCollectionViewController.swift */; };
 		4B7D11BE220B364700063223 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7D11BD220B364700063223 /* GalleryCollectionViewCell.swift */; };
 		4B7D11C0220B3D5000063223 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7D11BF220B3D5000063223 /* Utilities.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B383445220FF15C00A41E60 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		4B7D11BB220B352F00063223 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		4B7D11BD220B364700063223 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B7D11BF220B3D5000063223 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				4BC92CD02206D492001D8010 /* Supporting Files */,
 				4BC92CC22206D47D001D8010 /* Main.storyboard */,
 				4BD0B4202208764100D8A2FD /* GalleryListTableViewController.swift */,
+				4B383445220FF15C00A41E60 /* ImageViewController.swift */,
 				4B7D11BB220B352F00063223 /* GalleryCollectionViewController.swift */,
 				4B7D11BD220B364700063223 /* GalleryCollectionViewCell.swift */,
 				4BD0B42422089E5700D8A2FD /* GalleryTableViewCell.swift */,
@@ -162,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BD0B423220878BE00D8A2FD /* Gallery.swift in Sources */,
+				4B383446220FF15C00A41E60 /* ImageViewController.swift in Sources */,
 				4B7D11BC220B352F00063223 /* GalleryCollectionViewController.swift in Sources */,
 				4BD0B4212208764100D8A2FD /* GalleryListTableViewController.swift in Sources */,
 				4BC92CC12206D47D001D8010 /* ViewController.swift in Sources */,

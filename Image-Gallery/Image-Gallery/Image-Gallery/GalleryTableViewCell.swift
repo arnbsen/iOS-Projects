@@ -28,4 +28,5 @@ class GalleryTableViewCell: UITableViewCell {
     @IBOutlet weak var textField: UITextField!
     
     
+    
 }

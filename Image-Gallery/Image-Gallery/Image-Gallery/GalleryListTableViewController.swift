@@ -78,11 +78,15 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
             // Delete the row from the data source
            
             if indexPath.section == 0 {
-                let gallery = galleries[0].remove(at: indexPath.row)
-                galleries[1].append(gallery)
-                tableView.moveRow(at: indexPath, to: IndexPath(row: galleries[1].count - 1, section: 1))
-                tableView.reloadData()
-                
+                tableView.performBatchUpdates({
+                    let gallery = galleries[0].remove(at: indexPath.row)
+                    galleries[1].append(gallery)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    tableView.insertRows(at: [IndexPath(row: galleries[1].count - 1, section: 1)], with: .fade)
+                }, completion: {
+                    (_) in
+                    tableView.reloadData()
+                })
             } else {
                 galleries[1].remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
@@ -99,11 +103,13 @@ class GalleryListTableViewController: UITableViewController, UITextFieldDelegate
                 tableView.performBatchUpdates({ [weak self] in
                     if let gallery = self?.galleries[1].remove(at: indexPath.row) {
                         self?.galleries[0].append(gallery)
-                        tableView.moveRow(at: indexPath, to: IndexPath(row: (self?.galleries[0].count)! - 1, section: 0))
-                        tableView.reloadData()
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                        tableView.insertRows(at: [IndexPath(row: (self?.galleries[0].count)! - 1, section: 0)], with: .bottom)
+                        
                     }
                     }, completion:  {
                         (_) in
+                        tableView.reloadData()
                 })
             })
             ca.backgroundColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
