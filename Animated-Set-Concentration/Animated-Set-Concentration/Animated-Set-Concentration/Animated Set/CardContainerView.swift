@@ -135,8 +135,8 @@ class CardContainerView: UIView, UIDynamicAnimatorDelegate {
                     discardedCards.append(cardView)
                     let myBehavior = MyBehaviour(in: self.animator)
                     myBehavior.addItem(cardView)
-                    activePlayingCards.remove(at: activePlayingCards.index(of: cardView.card!)!)
-                    activePlayingCardsView.remove(at: activePlayingCardsView.index(of: cardView)!)
+                    activePlayingCards.remove(at: activePlayingCards.firstIndex(of: cardView.card!)!)
+                    activePlayingCardsView.remove(at: activePlayingCardsView.firstIndex(of: cardView)!)
                 }
             }
             setNeedsDisplay()

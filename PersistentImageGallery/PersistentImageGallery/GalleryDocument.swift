@@ -17,12 +17,16 @@ class GalleryDocument: UIDocument {
         return gallery?.json ?? Data()
     }
     
+    
+    
+    
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
         // Load your document from contents
-        if let json = try? Data(contentsOf: fileURL) {
+        if let json = contents as? Data {
             gallery = Gallery(json: json)
         }
     }
+    
     override func fileAttributesToWrite(to url: URL, for saveOperation: UIDocument.SaveOperation) throws -> [AnyHashable : Any] {
        let attributes = try super.fileAttributesToWrite(to: url, for: saveOperation)
         return attributes

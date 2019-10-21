@@ -42,7 +42,7 @@ class Set {
     func toggleCard(with card : SetCard) -> Bool{
         
         if selectedCards.contains(card){
-            selectedCards.remove(at: selectedCards.index(of: card)!)
+            selectedCards.remove(at: selectedCards.firstIndex(of: card)!)
         } else {
             selectedCards += [card]
         }
@@ -91,7 +91,7 @@ class Set {
         
         if condition {
             for card in selectedCards {
-                let index = activePlayingCards.index(of: card)!
+                let index = activePlayingCards.firstIndex(of: card)!
                 if deck.count > 0 {
                     activePlayingCards[index] = deck.remove(at: deck.count.arc4random)
                 } else {

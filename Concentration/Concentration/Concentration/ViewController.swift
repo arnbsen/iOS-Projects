@@ -50,7 +50,7 @@ class ViewController: UIViewController {
     
     
     @IBAction private func flipCard(_ sender: UIButton) {
-        if let cardNumber = cardButtons.index(of: sender){
+        if let cardNumber = cardButtons.firstIndex(of: sender){
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
         }else{

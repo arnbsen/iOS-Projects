@@ -19,8 +19,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         loadImage()
     }
-    
-    
+
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.minimumZoomScale = 0.04
@@ -29,13 +28,13 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
             scrollView.addSubview(imageView)
         }
     }
-    
+
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-    
+
     var imageView = UIImageView()
-    
+
     private func loadImage () {
         if let im_url = url {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -45,6 +44,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
                             self?.imageView.image = image
                             self?.imageView.sizeToFit()
                             self?.scrollView?.contentSize = image.size
+                            self?.scrollView.zoomScale = 2.0
                         }
                     }
                 }

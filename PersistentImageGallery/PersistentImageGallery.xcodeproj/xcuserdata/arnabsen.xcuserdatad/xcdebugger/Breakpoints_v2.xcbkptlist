@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508391"
+            timestampString = "585385014.341416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "GalleryCollectionViewController"
-            landmarkType = "3">
+            landmarkName = "gallery"
+            landmarkType = "24">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508471"
+            timestampString = "585385014.345342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "collectionView(_:performDropWith:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.5085289"
+            timestampString = "585385014.345598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "loadNewImage(with:at:)"
             landmarkType = "7">
             <Locations>
@@ -120,12 +120,12 @@
                   moduleName = "PersistentImageGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
-                  timestampString = "573807917.413208"
+                  timestampString = "585385031.505061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "238">
                </Location>
                <Location
                   shouldBeEnabled = "No"
@@ -135,12 +135,12 @@
                   moduleName = "PersistentImageGallery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
-                  timestampString = "573807917.415163"
+                  timestampString = "585385031.50683"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "272">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -152,11 +152,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508584"
+            timestampString = "585385014.345839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "loadNewImage(with:at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersistentImageGallery.GalleryCollectionViewController.(loadNewImage in _825DC8DB81F6E9F2252567F6918A8E87)(with: Foundation.URL, at: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "PersistentImageGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
+                  timestampString = "585385054.467387"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "238">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in PersistentImageGallery.GalleryCollectionViewController.(loadNewImage in _825DC8DB81F6E9F2252567F6918A8E87)(with: Foundation.URL, at: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "PersistentImageGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
+                  timestampString = "585385054.469295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.346072"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "loadNewImage(with:at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -168,27 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508639"
+            timestampString = "585385014.346302"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "loadNewImage(with:at:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508693"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
             landmarkName = "loadNewImage(with:at:)"
             landmarkType = "7">
             <Locations>
@@ -232,11 +264,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508744"
+            timestampString = "585385014.346534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "loadNewImage(with:at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in PersistentImageGallery.GalleryCollectionViewController.(loadNewImage in _825DC8DB81F6E9F2252567F6918A8E87)(with: Foundation.URL, at: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "PersistentImageGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
+                  timestampString = "585385058.080227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "195"
+                  endingLineNumber = "195"
+                  offsetFromSymbolStart = "928">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in PersistentImageGallery.GalleryCollectionViewController.(loadNewImage in _825DC8DB81F6E9F2252567F6918A8E87)(with: Foundation.URL, at: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "PersistentImageGallery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnabsen/Developer/PersistentImageGallery/PersistentImageGallery/GalleryCollectionViewController.swift"
+                  timestampString = "585385058.081953"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "106">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.346765"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "loadNewImage(with:at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -248,27 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508795"
+            timestampString = "585385014.347038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "loadNewImage(with:at:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.508855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "collectionView(_:performDropWith:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -280,13 +344,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.508911"
+            timestampString = "573893385.06907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
             endingLineNumber = "19"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -296,13 +360,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.5092781"
+            timestampString = "573893385.069105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -312,13 +376,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.50955"
+            timestampString = "573893385.069139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
-            landmarkName = "documentBrowser(_:didRequestDocumentCreationWithHandler:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -328,13 +392,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.509791"
+            timestampString = "573893385.069172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
             endingLineNumber = "27"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -344,13 +408,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.5100321"
+            timestampString = "573893385.069205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
             endingLineNumber = "28"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -360,12 +424,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.510269"
+            timestampString = "573893385.069237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.347348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "save()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -376,12 +456,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.510509"
+            timestampString = "585385014.34759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "save(_:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "save()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -392,28 +472,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.5105619"
+            timestampString = "585385014.347815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "save(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.5106111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "save(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "save()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -424,13 +488,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryDocument.swift"
-            timestampString = "573848009.510661"
+            timestampString = "573893385.0693769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
-            landmarkName = "GalleryDocument"
-            landmarkType = "3">
+            landmarkName = "unknown"
+            landmarkType = "0">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -487,13 +551,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryDocument.swift"
-            timestampString = "573848009.510707"
+            timestampString = "573893385.069414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "load(fromContents:ofType:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -503,13 +567,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryDocument.swift"
-            timestampString = "573848009.5107501"
+            timestampString = "573893385.0694489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
             endingLineNumber = "22"
-            landmarkName = "load(fromContents:ofType:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -519,13 +583,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryDocument.swift"
-            timestampString = "573848009.5107909"
+            timestampString = "573893385.069483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "contents(forType:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -535,13 +599,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/DocumentBrowserViewController.swift"
-            timestampString = "573848009.510833"
+            timestampString = "573893385.069517"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "presentDocument(at:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -551,23 +615,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.5110821"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.511129"
+            timestampString = "585385014.348074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "39"
@@ -583,11 +631,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.51117"
+            timestampString = "585385014.34829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.3485039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -599,12 +663,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
-            timestampString = "573848009.51121"
+            timestampString = "585385014.348717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "reInstantiate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.348935"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "prepare(for:sender:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersistentImageGallery/GalleryCollectionViewController.swift"
+            timestampString = "585385014.349151"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "loadNewImage(with:at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

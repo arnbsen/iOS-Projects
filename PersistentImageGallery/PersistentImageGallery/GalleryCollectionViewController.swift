@@ -14,7 +14,14 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     var document: GalleryDocument?
     
     //MARK: Model Configuration for Collection View
-    var gallery : Gallery?
+    var gallery : Gallery? {
+        didSet {
+            document?.gallery = gallery
+            if loadedOnce && document?.gallery != nil {
+                document?.updateChangeCount(.done)
+            }
+        }
+    }
     
     
     //MARK: ViewController LifeCycle Methods
@@ -40,14 +47,13 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
-        save()
+        //save()
         dismiss(animated: true, completion: {
             self.document?.close()
         })
-        
     }
     
-    @IBAction func save(_ sender: UIBarButtonItem? = nil) {
+    private func save() {
         document?.gallery = gallery
         if document?.gallery != nil {
             document?.updateChangeCount(.done)
@@ -96,6 +102,7 @@ class GalleryCollectionViewController: UIViewController, UICollectionViewDelegat
         } else if sender.state == .ended {
             currentCellSize = CGSize(width: currentCellSize.width * scaleFactor, height: currentCellSize.height * scaleFactor)
             scaleFactor = 1.0
+            reloadImages()
         }
     }
     
