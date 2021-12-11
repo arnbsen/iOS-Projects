@@ -21,30 +21,39 @@ let flagArray = [
     "🇺🇾", "🇧🇹", "🇧🇩", "🇫🇷", "🇲🇨", "🇯🇲", "🇲🇱", "🇷🇺"]
 
 struct ContentView: View {
-    @State var themeId = 0
-    @State var contentDisplayArray: [String] =  []
+    @State var contentDisplayArray: [String] =  vechileArray
+    @State var emojiCount = 10
     var body: some View {
         VStack {
             Text("Memorize!").font(.largeTitle)
-            CardView(content: "😭").aspectRatio(2/3, contentMode: .fit)
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                    ForEach(contentDisplayArray[0..<emojiCount], id: \.self) { emoji in
+                        CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
+                    }
+                }
+            }
             HStack {
                 Spacer()
                 ThemeChooserButton(
                     sfSymbolName: "car.fill",
                     buttonText: "Vechiles") {
-                    themeId = 0
+                        contentDisplayArray = vechileArray.shuffled()
+                        emojiCount = Int.random(in: 10...24)
                 }
                 Spacer()
                 ThemeChooserButton(
                     sfSymbolName: "face.smiling.fill",
                     buttonText: "Emojis") {
-                    themeId = 1
+                        contentDisplayArray = emojiArray.shuffled()
+                        emojiCount = Int.random(in: 10...24)
                 }
                 Spacer()
                 ThemeChooserButton(
                     sfSymbolName: "flag.fill",
                     buttonText: "Flags") {
-                    themeId = 2
+                        contentDisplayArray = flagArray.shuffled()
+                        emojiCount = Int.random(in: 10...24)
                 }
                 Spacer()
             }
@@ -91,6 +100,7 @@ struct ThemeChooserButton: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+.previewInterfaceOrientation(.portrait)
         ContentView().preferredColorScheme(.dark)
     }
 }
