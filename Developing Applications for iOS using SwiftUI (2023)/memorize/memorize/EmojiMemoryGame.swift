@@ -39,11 +39,11 @@ class EmojiMemoryGame: ObservableObject {
         Theme(values: flagArray, name: "Flags", color: .blue),
         Theme(values: sportsArray, name: "Sports", color: .brown),
         Theme(values: fruitArray, name: "Fruits", color: .purple),
-        Theme(values: fastFoodArray, name: " Fast Food", color: .purple)
+        Theme(values: fastFoodArray, name: " Fast Food", color: .teal)
     ]
     
     private static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
-        let numberOfPairs = Int.random(in: 1..<theme.values.count)
+        let numberOfPairs = Int.random(in: 2..<theme.values.count)
         return MemoryGame<String>(numberOfPairOfCards: numberOfPairs) { pairIndex in
             if theme.values.indices.contains(pairIndex) {
                 theme.values[pairIndex]

@@ -17,6 +17,7 @@ struct EmojiMemoryGameView: View {
             Divider()
             Group {
                 infoBar
+                Divider()
                 cardGrid
             }.foregroundColor(emojiMemoryGame.theme.color)
             Button("New Game") {
