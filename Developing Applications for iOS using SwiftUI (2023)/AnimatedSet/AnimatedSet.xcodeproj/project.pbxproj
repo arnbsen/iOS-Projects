@@ -12,7 +12,6 @@
 		4BF61F8A2BF07E5300012A70 /* AnimatedSetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F892BF07E5300012A70 /* AnimatedSetGameView.swift */; };
 		4BF61F8C2BF07E5400012A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF61F8B2BF07E5400012A70 /* Assets.xcassets */; };
 		4BF61F902BF07E5400012A70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF61F8F2BF07E5400012A70 /* Preview Assets.xcassets */; };
-		4BF61F972BF07EC900012A70 /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F962BF07EC900012A70 /* ShapeFactory.swift */; };
 		4BF61F992BF07EED00012A70 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F982BF07EED00012A70 /* SetCard.swift */; };
 		4BF61F9B2BF07F4000012A70 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F9A2BF07F4000012A70 /* SetGame.swift */; };
 		4BF61F9D2BF07F9100012A70 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */; };
@@ -20,6 +19,7 @@
 		4BF61FA12BF0826200012A70 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA02BF0826200012A70 /* AspectVGrid.swift */; };
 		4BF61FA32BF0842600012A70 /* FlyingEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */; };
 		4BF61FA52BF29BEC00012A70 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA42BF29BEC00012A70 /* Cardify.swift */; };
+		4BFC53DD2BF9452300773372 /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC53DC2BF9452300773372 /* ShapeFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,6 @@
 		4BF61F8B2BF07E5400012A70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BF61F8D2BF07E5400012A70 /* AnimatedSet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnimatedSet.entitlements; sourceTree = "<group>"; };
 		4BF61F8F2BF07E5400012A70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4BF61F962BF07EC900012A70 /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = SOURCE_ROOT; };
 		4BF61F982BF07EED00012A70 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
 		4BF61F9A2BF07F4000012A70 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		4BF61FA02BF0826200012A70 /* AspectVGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingEmoji.swift; sourceTree = "<group>"; };
 		4BF61FA42BF29BEC00012A70 /* Cardify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		4BFC53DC2BF9452300773372 /* ShapeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +70,7 @@
 		4BF61F862BF07E5300012A70 /* AnimatedSet */ = {
 			isa = PBXGroup;
 			children = (
+				4BFC53DC2BF9452300773372 /* ShapeFactory.swift */,
 				4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */,
 				4BBEB1132BF8EAC4002D236A /* ScoreView.swift */,
 				4BF61F9E2BF07FE400012A70 /* SetCardView.swift */,
@@ -78,7 +79,6 @@
 				4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */,
 				4BF61F9A2BF07F4000012A70 /* SetGame.swift */,
 				4BF61F982BF07EED00012A70 /* SetCard.swift */,
-				4BF61F962BF07EC900012A70 /* ShapeFactory.swift */,
 				4BF61F872BF07E5300012A70 /* AnimatedSetApp.swift */,
 				4BF61F892BF07E5300012A70 /* AnimatedSetGameView.swift */,
 				4BF61F8B2BF07E5400012A70 /* Assets.xcassets */,
@@ -167,7 +167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF61FA12BF0826200012A70 /* AspectVGrid.swift in Sources */,
-				4BF61F972BF07EC900012A70 /* ShapeFactory.swift in Sources */,
 				4BF61F8A2BF07E5300012A70 /* AnimatedSetGameView.swift in Sources */,
 				4BF61F9F2BF07FE400012A70 /* SetCardView.swift in Sources */,
 				4BF61F9B2BF07F4000012A70 /* SetGame.swift in Sources */,
@@ -175,6 +174,7 @@
 				4BF61F9D2BF07F9100012A70 /* SetGameViewModel.swift in Sources */,
 				4BBEB1142BF8EAC4002D236A /* ScoreView.swift in Sources */,
 				4BF61F992BF07EED00012A70 /* SetCard.swift in Sources */,
+				4BFC53DD2BF9452300773372 /* ShapeFactory.swift in Sources */,
 				4BF61FA52BF29BEC00012A70 /* Cardify.swift in Sources */,
 				4BF61F882BF07E5300012A70 /* AnimatedSetApp.swift in Sources */,
 			);
