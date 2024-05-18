@@ -7,35 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B2B67A82BB66E7700BF6D27 /* SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B67A72BB66E7700BF6D27 /* SetApp.swift */; };
-		4B2B67AA2BB66E7700BF6D27 /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B67A92BB66E7700BF6D27 /* SetGameView.swift */; };
-		4B2B67AC2BB66E7800BF6D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2B67AB2BB66E7800BF6D27 /* Assets.xcassets */; };
-		4B2B67B02BB66E7800BF6D27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B2B67AF2BB66E7800BF6D27 /* Preview Assets.xcassets */; };
-		4B2B67B72BB66F4F00BF6D27 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B67B62BB66F4F00BF6D27 /* AspectVGrid.swift */; };
-		4B2F53BA2BD3CA86003B60BB /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F53B92BD3CA86003B60BB /* SetGameViewModel.swift */; };
-		4B2F53BC2BD3DC10003B60BB /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F53BB2BD3DC10003B60BB /* SetGame.swift */; };
-		4BDF75702BC022E700161047 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF756F2BC022E700161047 /* SetCard.swift */; };
-		4BDF75742BC02B7C00161047 /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF75732BC02B7C00161047 /* SetCardView.swift */; };
-		4BDF75762BC03CC100161047 /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDF75752BC03CC100161047 /* ShapeFactory.swift */; };
+		4BBEB1142BF8EAC4002D236A /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBEB1132BF8EAC4002D236A /* ScoreView.swift */; };
+		4BF61F882BF07E5300012A70 /* AnimatedSetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F872BF07E5300012A70 /* AnimatedSetApp.swift */; };
+		4BF61F8A2BF07E5300012A70 /* AnimatedSetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F892BF07E5300012A70 /* AnimatedSetGameView.swift */; };
+		4BF61F8C2BF07E5400012A70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF61F8B2BF07E5400012A70 /* Assets.xcassets */; };
+		4BF61F902BF07E5400012A70 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BF61F8F2BF07E5400012A70 /* Preview Assets.xcassets */; };
+		4BF61F972BF07EC900012A70 /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F962BF07EC900012A70 /* ShapeFactory.swift */; };
+		4BF61F992BF07EED00012A70 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F982BF07EED00012A70 /* SetCard.swift */; };
+		4BF61F9B2BF07F4000012A70 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F9A2BF07F4000012A70 /* SetGame.swift */; };
+		4BF61F9D2BF07F9100012A70 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */; };
+		4BF61F9F2BF07FE400012A70 /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61F9E2BF07FE400012A70 /* SetCardView.swift */; };
+		4BF61FA12BF0826200012A70 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA02BF0826200012A70 /* AspectVGrid.swift */; };
+		4BF61FA32BF0842600012A70 /* FlyingEmoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */; };
+		4BF61FA52BF29BEC00012A70 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF61FA42BF29BEC00012A70 /* Cardify.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B2B67A42BB66E7700BF6D27 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B2B67A72BB66E7700BF6D27 /* SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetApp.swift; sourceTree = "<group>"; };
-		4B2B67A92BB66E7700BF6D27 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
-		4B2B67AB2BB66E7800BF6D27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4B2B67AD2BB66E7800BF6D27 /* Set.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Set.entitlements; sourceTree = "<group>"; };
-		4B2B67AF2BB66E7800BF6D27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4B2B67B62BB66F4F00BF6D27 /* AspectVGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
-		4B2F53B92BD3CA86003B60BB /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
-		4B2F53BB2BD3DC10003B60BB /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
-		4BDF756F2BC022E700161047 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
-		4BDF75732BC02B7C00161047 /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
-		4BDF75752BC03CC100161047 /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
+		4BBEB1132BF8EAC4002D236A /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		4BF61F842BF07E5300012A70 /* AnimatedSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BF61F872BF07E5300012A70 /* AnimatedSetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedSetApp.swift; sourceTree = "<group>"; };
+		4BF61F892BF07E5300012A70 /* AnimatedSetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedSetGameView.swift; sourceTree = "<group>"; };
+		4BF61F8B2BF07E5400012A70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4BF61F8D2BF07E5400012A70 /* AnimatedSet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AnimatedSet.entitlements; sourceTree = "<group>"; };
+		4BF61F8F2BF07E5400012A70 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4BF61F962BF07EC900012A70 /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = SOURCE_ROOT; };
+		4BF61F982BF07EED00012A70 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
+		4BF61F9A2BF07F4000012A70 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
+		4BF61F9E2BF07FE400012A70 /* SetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
+		4BF61FA02BF0826200012A70 /* AspectVGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
+		4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingEmoji.swift; sourceTree = "<group>"; };
+		4BF61FA42BF29BEC00012A70 /* Cardify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B2B67A12BB66E7700BF6D27 /* Frameworks */ = {
+		4BF61F812BF07E5300012A70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,44 +51,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B2B679B2BB66E7700BF6D27 = {
+		4BF61F7B2BF07E5300012A70 = {
 			isa = PBXGroup;
 			children = (
-				4B2B67A62BB66E7700BF6D27 /* Set */,
-				4B2B67A52BB66E7700BF6D27 /* Products */,
+				4BF61F862BF07E5300012A70 /* AnimatedSet */,
+				4BF61F852BF07E5300012A70 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4B2B67A52BB66E7700BF6D27 /* Products */ = {
+		4BF61F852BF07E5300012A70 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B2B67A42BB66E7700BF6D27 /* Set.app */,
+				4BF61F842BF07E5300012A70 /* AnimatedSet.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4B2B67A62BB66E7700BF6D27 /* Set */ = {
+		4BF61F862BF07E5300012A70 /* AnimatedSet */ = {
 			isa = PBXGroup;
 			children = (
-				4B2F53B92BD3CA86003B60BB /* SetGameViewModel.swift */,
-				4BDF756F2BC022E700161047 /* SetCard.swift */,
-				4B2F53BB2BD3DC10003B60BB /* SetGame.swift */,
-				4BDF75732BC02B7C00161047 /* SetCardView.swift */,
-				4BDF75752BC03CC100161047 /* ShapeFactory.swift */,
-				4B2B67A72BB66E7700BF6D27 /* SetApp.swift */,
-				4B2B67B62BB66F4F00BF6D27 /* AspectVGrid.swift */,
-				4B2B67A92BB66E7700BF6D27 /* SetGameView.swift */,
-				4B2B67AB2BB66E7800BF6D27 /* Assets.xcassets */,
-				4B2B67AD2BB66E7800BF6D27 /* Set.entitlements */,
-				4B2B67AE2BB66E7800BF6D27 /* Preview Content */,
+				4BF61FA22BF0842600012A70 /* FlyingEmoji.swift */,
+				4BBEB1132BF8EAC4002D236A /* ScoreView.swift */,
+				4BF61F9E2BF07FE400012A70 /* SetCardView.swift */,
+				4BF61FA42BF29BEC00012A70 /* Cardify.swift */,
+				4BF61FA02BF0826200012A70 /* AspectVGrid.swift */,
+				4BF61F9C2BF07F9100012A70 /* SetGameViewModel.swift */,
+				4BF61F9A2BF07F4000012A70 /* SetGame.swift */,
+				4BF61F982BF07EED00012A70 /* SetCard.swift */,
+				4BF61F962BF07EC900012A70 /* ShapeFactory.swift */,
+				4BF61F872BF07E5300012A70 /* AnimatedSetApp.swift */,
+				4BF61F892BF07E5300012A70 /* AnimatedSetGameView.swift */,
+				4BF61F8B2BF07E5400012A70 /* Assets.xcassets */,
+				4BF61F8D2BF07E5400012A70 /* AnimatedSet.entitlements */,
+				4BF61F8E2BF07E5400012A70 /* Preview Content */,
 			);
-			path = Set;
+			path = AnimatedSet;
 			sourceTree = "<group>";
 		};
-		4B2B67AE2BB66E7800BF6D27 /* Preview Content */ = {
+		4BF61F8E2BF07E5400012A70 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4B2B67AF2BB66E7800BF6D27 /* Preview Assets.xcassets */,
+				4BF61F8F2BF07E5400012A70 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -90,39 +99,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B2B67A32BB66E7700BF6D27 /* Set */ = {
+		4BF61F832BF07E5300012A70 /* AnimatedSet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B2B67B32BB66E7800BF6D27 /* Build configuration list for PBXNativeTarget "Set" */;
+			buildConfigurationList = 4BF61F932BF07E5400012A70 /* Build configuration list for PBXNativeTarget "AnimatedSet" */;
 			buildPhases = (
-				4B2B67A02BB66E7700BF6D27 /* Sources */,
-				4B2B67A12BB66E7700BF6D27 /* Frameworks */,
-				4B2B67A22BB66E7700BF6D27 /* Resources */,
+				4BF61F802BF07E5300012A70 /* Sources */,
+				4BF61F812BF07E5300012A70 /* Frameworks */,
+				4BF61F822BF07E5300012A70 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Set;
-			productName = Set;
-			productReference = 4B2B67A42BB66E7700BF6D27 /* Set.app */;
+			name = AnimatedSet;
+			productName = AnimatedSet;
+			productReference = 4BF61F842BF07E5300012A70 /* AnimatedSet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4B2B679C2BB66E7700BF6D27 /* Project object */ = {
+		4BF61F7C2BF07E5300012A70 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					4B2B67A32BB66E7700BF6D27 = {
+					4BF61F832BF07E5300012A70 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 4B2B679F2BB66E7700BF6D27 /* Build configuration list for PBXProject "Set" */;
+			buildConfigurationList = 4BF61F7F2BF07E5300012A70 /* Build configuration list for PBXProject "AnimatedSet" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,48 +139,51 @@
 				en,
 				Base,
 			);
-			mainGroup = 4B2B679B2BB66E7700BF6D27;
-			productRefGroup = 4B2B67A52BB66E7700BF6D27 /* Products */;
+			mainGroup = 4BF61F7B2BF07E5300012A70;
+			productRefGroup = 4BF61F852BF07E5300012A70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B2B67A32BB66E7700BF6D27 /* Set */,
+				4BF61F832BF07E5300012A70 /* AnimatedSet */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4B2B67A22BB66E7700BF6D27 /* Resources */ = {
+		4BF61F822BF07E5300012A70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B2B67B02BB66E7800BF6D27 /* Preview Assets.xcassets in Resources */,
-				4B2B67AC2BB66E7800BF6D27 /* Assets.xcassets in Resources */,
+				4BF61F902BF07E5400012A70 /* Preview Assets.xcassets in Resources */,
+				4BF61F8C2BF07E5400012A70 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4B2B67A02BB66E7700BF6D27 /* Sources */ = {
+		4BF61F802BF07E5300012A70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BDF75762BC03CC100161047 /* ShapeFactory.swift in Sources */,
-				4B2B67AA2BB66E7700BF6D27 /* SetGameView.swift in Sources */,
-				4BDF75742BC02B7C00161047 /* SetCardView.swift in Sources */,
-				4B2B67A82BB66E7700BF6D27 /* SetApp.swift in Sources */,
-				4BDF75702BC022E700161047 /* SetCard.swift in Sources */,
-				4B2B67B72BB66F4F00BF6D27 /* AspectVGrid.swift in Sources */,
-				4B2F53BC2BD3DC10003B60BB /* SetGame.swift in Sources */,
-				4B2F53BA2BD3CA86003B60BB /* SetGameViewModel.swift in Sources */,
+				4BF61FA12BF0826200012A70 /* AspectVGrid.swift in Sources */,
+				4BF61F972BF07EC900012A70 /* ShapeFactory.swift in Sources */,
+				4BF61F8A2BF07E5300012A70 /* AnimatedSetGameView.swift in Sources */,
+				4BF61F9F2BF07FE400012A70 /* SetCardView.swift in Sources */,
+				4BF61F9B2BF07F4000012A70 /* SetGame.swift in Sources */,
+				4BF61FA32BF0842600012A70 /* FlyingEmoji.swift in Sources */,
+				4BF61F9D2BF07F9100012A70 /* SetGameViewModel.swift in Sources */,
+				4BBEB1142BF8EAC4002D236A /* ScoreView.swift in Sources */,
+				4BF61F992BF07EED00012A70 /* SetCard.swift in Sources */,
+				4BF61FA52BF29BEC00012A70 /* Cardify.swift in Sources */,
+				4BF61F882BF07E5300012A70 /* AnimatedSetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4B2B67B12BB66E7800BF6D27 /* Debug */ = {
+		4BF61F912BF07E5400012A70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		4B2B67B22BB66E7800BF6D27 /* Release */ = {
+		4BF61F922BF07E5400012A70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -285,15 +297,15 @@
 			};
 			name = Release;
 		};
-		4B2B67B42BB66E7800BF6D27 /* Debug */ = {
+		4BF61F942BF07E5400012A70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Set/Set.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AnimatedSet/AnimatedSet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Set/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AnimatedSet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3DUBQRY283;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -312,7 +324,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arnbsen.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arnbsen.AnimatedSet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -322,15 +334,15 @@
 			};
 			name = Debug;
 		};
-		4B2B67B52BB66E7800BF6D27 /* Release */ = {
+		4BF61F952BF07E5400012A70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Set/Set.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AnimatedSet/AnimatedSet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Set/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"AnimatedSet/Preview Content\"";
 				DEVELOPMENT_TEAM = 3DUBQRY283;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -349,7 +361,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arnbsen.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arnbsen.AnimatedSet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -362,25 +374,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B2B679F2BB66E7700BF6D27 /* Build configuration list for PBXProject "Set" */ = {
+		4BF61F7F2BF07E5300012A70 /* Build configuration list for PBXProject "AnimatedSet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4B2B67B12BB66E7800BF6D27 /* Debug */,
-				4B2B67B22BB66E7800BF6D27 /* Release */,
+				4BF61F912BF07E5400012A70 /* Debug */,
+				4BF61F922BF07E5400012A70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B2B67B32BB66E7800BF6D27 /* Build configuration list for PBXNativeTarget "Set" */ = {
+		4BF61F932BF07E5400012A70 /* Build configuration list for PBXNativeTarget "AnimatedSet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4B2B67B42BB66E7800BF6D27 /* Debug */,
-				4B2B67B52BB66E7800BF6D27 /* Release */,
+				4BF61F942BF07E5400012A70 /* Debug */,
+				4BF61F952BF07E5400012A70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4B2B679C2BB66E7700BF6D27 /* Project object */;
+	rootObject = 4BF61F7C2BF07E5300012A70 /* Project object */;
 }

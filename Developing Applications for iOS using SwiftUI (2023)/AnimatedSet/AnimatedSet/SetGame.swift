@@ -27,6 +27,7 @@ struct SetGame {
     
     private(set) var cardsActiveInTheGame: [SetCard]
     private(set) var cardsNotIntheGame: [SetCard]
+    private(set) var matchedCards: [SetCard]
     private(set) var score = 0
     
     private var matchedCardsIndices: [Int] {
@@ -39,24 +40,25 @@ struct SetGame {
  
     init() {
         let allCards = SetGame.generateAllCards()
-        cardsActiveInTheGame = allCards.prefix(upTo: 12).shuffled()
-        cardsNotIntheGame = allCards.suffix(from: 12).shuffled()
+        cardsActiveInTheGame = Array(allCards.prefix(upTo: 12))
+        cardsNotIntheGame = Array(allCards.suffix(from: 12))
+        matchedCards = []
     }
     
     mutating func deal3Cards() {
         if (cardsNotIntheGame.count >= 3) {
-            var cardsToAdd = cardsNotIntheGame.prefix(upTo: 3).shuffled()
-            if (matchedCardsIndices.count == 3) {
-                matchedCardsIndices.forEach {
-                    cardsActiveInTheGame[$0] = cardsToAdd.remove(at: 0)
-                }
-            } else {
-                cardsActiveInTheGame += cardsToAdd
-            }
+            let cardsToAdd = Array(cardsNotIntheGame.prefix(upTo: 3))
+            cardsActiveInTheGame += cardsToAdd
         }
-        cardsActiveInTheGame.removeAll(where: { $0.matched })
+        matchedCards += cardsActiveInTheGame.filter( { $0.matched } ).map { card in
+            return SetCard(number: card.number,
+                           shapeType: card.shapeType,
+                           fillType: card.fillType,
+                           color: card.color)
+        }
+        cardsActiveInTheGame.removeAll { $0.matched }
         if (!cardsNotIntheGame.isEmpty) {
-            cardsNotIntheGame = cardsNotIntheGame.suffix(from: 3).shuffled()
+            cardsNotIntheGame = Array(cardsNotIntheGame.suffix(from: 3))
         }
     }
     
@@ -71,6 +73,10 @@ struct SetGame {
                 selectCard(card, cardIndex)
             }
         }
+    }
+    
+    mutating func shuffle() {
+        cardsActiveInTheGame.shuffle()
     }
     
     private mutating func selectCard(_ card: SetCard, _ index: Int) {
@@ -93,7 +99,6 @@ struct SetGame {
             selectedCardsIndices.forEach {
                 cardsActiveInTheGame[$0].isPartOfSet = true
                 cardsActiveInTheGame[$0].matched = areSelectedCardsAMatch
-                cardsActiveInTheGame[$0].isPartOfSet = true
             }
             if (areSelectedCardsAMatch) {
                 score += 3

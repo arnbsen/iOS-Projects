@@ -16,38 +16,16 @@ struct SetCardView: View {
             let shapeSize = calculateSizeForShape(containerSize: geometry.size)
             let strokeWidth = getStrokeWidth(containerSize: geometry.size)
             let cornerRadius = min(geometry.size.width * 0.15,  geometry.size.height * 0.15)
-            ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(fillColor)
-                    .stroke(color, lineWidth: strokeWidth)
-                if (card.isPartOfSet) {
-                    Text(card.matched ? "🎉" : "😞").font(.largeTitle)
-                } else {
-                    VStack {
-                        ForEach(0..<card.number) { _ in
-                            switch card.shapeType {
-                            case .DIAMOND:
-                                decorateView(
-                                    with: ShapeFactory.Diamond(),
-                                    size: shapeSize)
-                            case .SQUIGGLE:
-                                decorateView(
-                                    with: ShapeFactory.Squiggle(),
-                                    size: shapeSize)
-                            case .ROUNDED_RECTRANGLE:
-                                decorateView(
-                                    with: ShapeFactory.RoundedRectrangle(),
-                                    size: shapeSize)
-                            }
-                        }
-                    }.padding(0)
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(fillColor)
+                .stroke(color, lineWidth: strokeWidth)
+                .overlay {
+                    drawCardView(withSize: shapeSize)
                 }
-                
-            }
         }
     }
     
-    var color: Color {
+    private var color: Color {
         switch card.color {
         case .COLOR_A:
             Color.red
@@ -58,14 +36,35 @@ struct SetCardView: View {
         }
     }
     
-    var fillColor: Color {
-        if (card.isPartOfSet) {
+    private var fillColor: Color {
+        if card.matched {
             color
-        } else if (card.selected) {
+        } else if card.selected {
             Color.orange.opacity(0.25)
         } else {
             Color.white
         }
+    }
+    
+    private func drawCardView(withSize shapeSize: CGSize) -> some View {
+        VStack {
+            ForEach(0..<card.number) { _ in
+                switch card.shapeType {
+                    case .DIAMOND:
+                        decorateView(
+                            with: ShapeFactory.Diamond(),
+                            size: shapeSize)
+                    case .SQUIGGLE:
+                        decorateView(
+                            with: ShapeFactory.Squiggle(),
+                            size: shapeSize)
+                    case .ROUNDED_RECTRANGLE:
+                        decorateView(
+                            with: ShapeFactory.RoundedRectrangle(),
+                            size: shapeSize)
+                    }
+                }
+            }.padding(0)
     }
     
     private func decorateView(with shape: some Shape, size: CGSize) -> some View {
@@ -103,6 +102,9 @@ struct SetCardView: View {
 
 
 #Preview {
-    SetCardView(card: SetCard(number: 3, shapeType: .DIAMOND, fillType: .SOLID, color: .COLOR_C))
+    VStack {
+        SetCardView(card: SetCard(number: 3, shapeType: .DIAMOND, fillType: .SOLID, color: .COLOR_A))
+        SetCardView(card: SetCard(number: 3, shapeType: .DIAMOND, fillType: .SOLID, color: .COLOR_A))
+    }
     
 }
