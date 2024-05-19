@@ -41,12 +41,7 @@ struct AnimatedSetGameView: View {
             ScoreView(oldScore: oldScore, newScore: currentScore)
             Spacer()
             createGameButton(title: "New Game", icon: "plus") {
-                setGame.newGame()
-                facedUpCards.removeAll()
-                withAnimation(.none) {
-                    dealtCards.removeAll()
-                }
-                dealCards()
+                newGame()
             }
         }
     }
@@ -89,14 +84,25 @@ struct AnimatedSetGameView: View {
                         }
                         currentScore = setGame.score
                         dealCards()
-                     }
-                     .matchedGeometryEffect(id: card.id, in: card.matched ? discardedCardNameSpace: notInTheGameNamepace)
-                     .transition(.asymmetric(insertion: .identity, removal: .identity))
-          }
+                    }
+                    .matchedGeometryEffect(id: card.id, in: card.matched ? discardedCardNameSpace: notInTheGameNamepace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
+            }
         }
     }
     
     // MARK: Aninmation Section
+    
+    private func newGame() {
+        withAnimation(nil) {
+            facedUpCards.removeAll()
+        }
+        dealtCards.removeAll()
+        setGame.newGame()
+        dealCards()
+        oldScore = 0
+        currentScore = 0
+    }
 
     @Namespace private var notInTheGameNamepace
     @Namespace private var discardedCardNameSpace
@@ -104,23 +110,19 @@ struct AnimatedSetGameView: View {
     @State private var dealtCards = Set<SetCard.ID>()
     @State private var facedUpCards = Set<SetCard.ID>()
     
+    // Stupid Bug: ForEach at Line#120 will not work with in-line implementation
+    private var undealtCards: [SetCard] {
+        (setGame.cardNotIntheGame + setGame.cardsActiveInTheGame).filter( { !isCardDealt($0) } )
+    }
+    
     private var notIntheGameCardPile: some View {
         return ZStack {
-            ForEach(setGame.cardNotIntheGame) { card in
-                if !isCardDealt(card) {
-                    SetCardView(card: card)
-                        .cardify(isFaceUp: false)
-                        .matchedGeometryEffect(id: card.id, in: notInTheGameNamepace)
-                        .transition(.asymmetric(insertion: .identity, removal: .identity))
-                }
-            }
-            ForEach(setGame.cardsActiveInTheGame) { card in
-                if !isCardDealt(card) {
-                    SetCardView(card: card)
-                        .cardify(isFaceUp: false)
-                        .matchedGeometryEffect(id: card.id, in: notInTheGameNamepace)
-                        .transition(.asymmetric(insertion: .identity, removal: .identity))
-                }
+            ForEach(undealtCards) { card in
+                SetCardView(card: card)
+                    .cardify(isFaceUp: isCardFacedUp(card))
+                    .matchedGeometryEffect(id: card.id, in: notInTheGameNamepace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    .animation(nil, value: UUID())
             }
         }.frame(width: deckWidth, height: deckWidth / aspectRatio)
     }
@@ -156,7 +158,7 @@ struct AnimatedSetGameView: View {
     
     private var discardedCardPile: some View {
         ZStack {
-            let discardedCards = setGame.cardsAlreadyPlayed.reversed()
+            let discardedCards = setGame.cardsAlreadyPlayed
             ForEach(discardedCards) { card in
                 SetCardView(card: card)
                     .cardify(isFaceUp: true)
