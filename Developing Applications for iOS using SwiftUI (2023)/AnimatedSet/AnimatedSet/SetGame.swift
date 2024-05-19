@@ -28,7 +28,7 @@ struct SetGame {
     private(set) var cardsActiveInTheGame: [SetCard]
     private(set) var cardsNotIntheGame: [SetCard]
     private(set) var matchedCards: [SetCard]
-    private(set) var score = 0
+    private(set) var score: Int
     
     private var matchedCardsIndices: [Int] {
         cardsActiveInTheGame.indices.filter( { cardsActiveInTheGame[$0].matched } )
@@ -42,6 +42,7 @@ struct SetGame {
         let allCards = SetGame.generateAllCards()
         cardsActiveInTheGame = Array(allCards.prefix(upTo: 12))
         cardsNotIntheGame = Array(allCards.suffix(from: 12))
+        score = 0
         matchedCards = []
     }
     
@@ -78,7 +79,7 @@ struct SetGame {
     mutating func shuffle() {
         cardsActiveInTheGame.shuffle()
     }
-    
+
     private mutating func selectCard(_ card: SetCard, _ index: Int) {
         if selectedCardsIndices.count == 3 {
             if (areSelectedCardsAMatch()) {

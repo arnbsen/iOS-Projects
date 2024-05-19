@@ -33,12 +33,12 @@ struct AnimatedSetGameView: View {
         }
     }
     
-    @State private var oldScore = 0
     @State private var currentScore = 0
+    @State private var diffScore = 0
     
     private var topBar: some View {
         HStack {
-            ScoreView(oldScore: oldScore, newScore: currentScore)
+            ScoreView(newScore: currentScore, diffScore: diffScore)
             Spacer()
             createGameButton(title: "New Game", icon: "plus") {
                 newGame()
@@ -78,15 +78,17 @@ struct AnimatedSetGameView: View {
                         }
                     }
                     .onTapGesture {
-                        oldScore = setGame.score
+                        let oldScore = setGame.score
                         withAnimation {
                             setGame.selectCard(card)
                         }
                         currentScore = setGame.score
+                        diffScore = currentScore - oldScore
                         dealCards()
                     }
-                    .matchedGeometryEffect(id: card.id, in: card.matched ? discardedCardNameSpace: notInTheGameNamepace)
+                    .matchedGeometryEffect(id: card.id, in: dealingCardNamespace)
                     .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    .id(card.id + disambiguator.uuidString)
             }
         }
     }
@@ -94,21 +96,23 @@ struct AnimatedSetGameView: View {
     // MARK: Aninmation Section
     
     private func newGame() {
-        withAnimation(nil) {
-            facedUpCards.removeAll()
-        }
+        facedUpCards.removeAll()
         dealtCards.removeAll()
+        disambiguator = UUID()
         setGame.newGame()
         dealCards()
-        oldScore = 0
+        diffScore = 0
         currentScore = 0
+
     }
 
-    @Namespace private var notInTheGameNamepace
-    @Namespace private var discardedCardNameSpace
+    @Namespace private var dealingCardNamespace
+    @State private var showView = true
     
     @State private var dealtCards = Set<SetCard.ID>()
     @State private var facedUpCards = Set<SetCard.ID>()
+    // Another Stupid Bug: Animation System retains the state for same view tree
+    @State private var disambiguator = UUID()
     
     // Stupid Bug: ForEach at Line#120 will not work with in-line implementation
     private var undealtCards: [SetCard] {
@@ -120,9 +124,8 @@ struct AnimatedSetGameView: View {
             ForEach(undealtCards) { card in
                 SetCardView(card: card)
                     .cardify(isFaceUp: isCardFacedUp(card))
-                    .matchedGeometryEffect(id: card.id, in: notInTheGameNamepace)
+                    .matchedGeometryEffect(id: card.id, in: dealingCardNamespace)
                     .transition(.asymmetric(insertion: .identity, removal: .identity))
-                    .animation(nil, value: UUID())
             }
         }.frame(width: deckWidth, height: deckWidth / aspectRatio)
     }
@@ -155,14 +158,13 @@ struct AnimatedSetGameView: View {
             }
         }
     }
-    
+
     private var discardedCardPile: some View {
         ZStack {
-            let discardedCards = setGame.cardsAlreadyPlayed
-            ForEach(discardedCards) { card in
+            ForEach(setGame.cardsAlreadyPlayed) { card in
                 SetCardView(card: card)
-                    .cardify(isFaceUp: true)
-                    .matchedGeometryEffect(id: card.id, in: discardedCardNameSpace)
+                    .cardify(isFaceUp: isCardFacedUp(card))
+                    .matchedGeometryEffect(id: card.id, in: dealingCardNamespace)
                     .transition(.asymmetric(insertion: .identity, removal: .identity))
             }
         }

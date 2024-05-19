@@ -20,9 +20,11 @@ struct SetCardView: View {
                 .fill(fillColor)
                 .stroke(color, lineWidth: strokeWidth)
                 .overlay {
-                    drawCardView(withSize: shapeSize)
+                    if !card.matched {
+                        drawCardView(withSize: shapeSize)
+                    }
                 }
-        }
+        }.cardify(isFaceUp: true)
     }
     
     private var color: Color {
