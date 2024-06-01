@@ -180,13 +180,9 @@ struct EmojiArtDocumentView: View {
         if isEmojiSelectionEmpty {
             return
         }
-        let offsetToUse = Emoji.Offset(
-            x: Int((offset.width) / documentZoom),
-            y: Int(-offset.height / documentZoom)
-        )
         for emoji in document.emojis {
             if selectedEmojis.contains(emoji.id) {
-               moveEmoji(emoji, by: offsetToUse)
+                moveEmoji(emoji, by: Emoji.Offset(x: Int(offset.width), y:  Int(-offset.height)))
             }
         }
     }
